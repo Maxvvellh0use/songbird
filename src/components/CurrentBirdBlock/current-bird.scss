@@ -2,8 +2,15 @@
 @import "../../style/placeholders";
 
 .current_bird_block {
-  padding-top: 40px;
-  height: 200px;
+  @extend %flex_row_space-between;
+  height: 100%;
+  max-height: 250px;
   border-radius: 5px;
   background: $color-main-blocks;
+}
+
+.image_bird {
+  width: 250px;
+  margin: 10px;
+  border-radius: 10px;
 }
