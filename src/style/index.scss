@@ -1,5 +1,14 @@
+@import "constants";
+
+ul {
+  list-style: none;
+  padding: 0;
+  user-select: none;
+}
+
 body {
   margin: 0;
+  background: $color-body !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +19,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: $width-wrapper;
+}
+
+.wrapper_functional_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

@@ -1,0 +1,28 @@
+@import "../../style/constants";
+@import "../../style/placeholders";
+
+.answer_options_block {
+  margin-top: 15px;
+  width: 550px;
+  height: 277px;
+  border-radius: 5px;
+  background: $color-main-blocks;
+  overflow: hidden;
+}
+
+.answers_list {
+  list-style: disc inside;
+  color: snow;
+}
+
+.answers_item {
+  @extend %my-transition;
+  text-align: left;
+  padding: 10px;
+  border: .5px solid $color-answer-options-hover;
+  &:hover {
+    cursor: pointer;
+    background: $color-answer-options-hover;
+  }
+}
+

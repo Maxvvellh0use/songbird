@@ -1,0 +1,9 @@
+@import "../../style/constants";
+@import "../../style/placeholders";
+
+.current_bird_block {
+  padding-top: 40px;
+  height: 200px;
+  border-radius: 5px;
+  background: $color-main-blocks;
+}
