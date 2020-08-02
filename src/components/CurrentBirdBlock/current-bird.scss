@@ -12,8 +12,10 @@
 }
 
 .current_bird_name {
+  width: 5rem;
+  justify-self: left;
   font-size: 30px;
-  margin: 10px;
+  margin-top: 10px;
 }
 
 .image_bird {
@@ -22,9 +24,45 @@
   border-radius: 10px;
 }
 
+.name_and_audio {
+  margin-left: 2rem;
+}
+
 .play_pause_button {
   width: 60px;
   &:hover {
     cursor: pointer;
   }
+}
+
+.audio_player_container {
+  @extend %flex_row_space-between;
+  padding-top: 20px;
+  border-top: 1px solid $color-body;
+  justify-content: left;
+}
+
+.audio_player__timebar {
+  margin-top: 15px;
+  align-self: center;
+  margin-left: 30px;
+}
+
+.timebar {
+  width: 500px;
+  height: 10px;
+  border-radius: 5px;
+  background: $color-answer-options-hover;
+}
+
+.timebar_background {
+  position: relative;
+  height: 10px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.time {
+  @extend %flex_row_space-between;
+  height: 15px;
 }
