@@ -1,4 +1,4 @@
-import { AudioPlayerBird } from "./AudioPlayerBird";
+import AudioPlayerBird from "./AudioPlayerBird";
 import './current-bird.scss';
 import altBirdImage from '../../assets/img/alt_bird_image.png';
 import React, { useState } from "react";

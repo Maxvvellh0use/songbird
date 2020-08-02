@@ -5,16 +5,10 @@ import { Button } from "../Buttons/Button";
 
 
 
-export class FunctionalBlock extends React.Component<any, any> {
-    state = {
-
+export const FunctionalBlock: React.FunctionComponent = () => {
+    const nextLevelHandler = () => {
+        return true
     }
-
-    nextLevelHandler = () => {
-        return console.log('sd')
-    }
-
-    render = () => {
         return (
             <section className='functional_section'>
                 <div className='wrapper wrapper_functional_block'>
@@ -22,12 +16,11 @@ export class FunctionalBlock extends React.Component<any, any> {
                     <DescriptionBirdBlock />
                 </div>
                 <div className='wrapper'>
-                    <Button onClick={this.nextLevelHandler}
+                    <Button onClick={nextLevelHandler}
                             value={'Next Level'}
                             className={'button_next_level'}
                     />
                 </div>
             </section>
         )
-    }
 }

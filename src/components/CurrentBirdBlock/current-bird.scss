@@ -21,3 +21,10 @@
   margin: 10px;
   border-radius: 10px;
 }
+
+.play_pause_button {
+  width: 60px;
+  &:hover {
+    cursor: pointer;
+  }
+}
