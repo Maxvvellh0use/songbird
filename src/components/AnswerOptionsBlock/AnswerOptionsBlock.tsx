@@ -1,8 +1,10 @@
 import React from "react";
 import './answer-options-block.scss'
 import { getAllBirdsNames } from "../../data/allBirdsNames";
+import { connect } from "react-redux";
 
-export const AnswerOptionsBlock: React.FunctionComponent = () => {
+const AnswerOptionsBlock: React.FunctionComponent = (currentBirdInf) => {
+    console.log(currentBirdInf)
     const allBirdsNames: string[] = getAllBirdsNames();
     const firstSixNames: string[] = allBirdsNames.filter((name, index) => index < 6);
     const firstSixListItems: JSX.Element[] = firstSixNames.map((names: string) =>
@@ -15,3 +17,17 @@ export const AnswerOptionsBlock: React.FunctionComponent = () => {
         </div>
     )
 }
+
+const mapStateToProps = (state: any) => {
+    return {
+        currentBirdInf: {
+            birdSpecies: state.currentBird.birdSpecies,
+            birdDescription: state.currentBird.birdDescription,
+            birdImagePath: state.currentBird.birdImagePath,
+            birdAudioPath: state.currentBird.birdAudioPath,
+            categoryBirdIndex: state.currentBird.categoryBirdIndex,
+        }
+    }
+}
+
+export default connect(mapStateToProps, null)(AnswerOptionsBlock)

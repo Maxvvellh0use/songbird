@@ -1,7 +1,9 @@
 import React from "react";
-import { AnswerOptionsBlock } from "../AnswerOptionsBlock/AnswerOptionsBlock";
-import { DescriptionBirdBlock } from "../DescriptionBirdBlock/DescriptionBirdBlock";
+import AnswerOptionsBlock from "../AnswerOptionsBlock/AnswerOptionsBlock";
+import DescriptionBirdBlock from "../DescriptionBirdBlock/DescriptionBirdBlock";
 import { Button } from "../Buttons/Button";
+
+
 
 export class FunctionalBlock extends React.Component<any, any> {
     state = {

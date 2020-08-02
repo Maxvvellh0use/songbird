@@ -1,4 +1,5 @@
 @import "../../style/constants";
+@import "../../style/placeholders";
 
 .description_bird_block {
   width: 575px;
@@ -6,4 +7,49 @@
   margin-top: 15px;
   border-radius: 5px;
   background: $color-main-blocks;
+  text-align: left;
+  padding: 10px;
+  color: snow;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description_default {
+
+}
+
+.image_and_audio {
+  @extend %flex_row_space-between;
+  justify-content: left;
+}
+
+.image_container {
+  max-width: 200px;
+  max-height: 155px;
+  overflow: hidden;
+}
+
+.bird_image {
+  width: 200px;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.bird_name {
+  font-size: 30px;
+  margin-left: 20px;
+}
+
+.description_bird_block__description {
+
+}
+
+.description__bird_description {
+  margin-top: 10px;
+  max-height: 96px;
+}
+
+.hidden {
+  display: none;
 }
