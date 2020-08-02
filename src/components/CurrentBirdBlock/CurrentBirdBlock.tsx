@@ -24,14 +24,18 @@ const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
         birdAudioPath: firstBirdData.audio,
         categoryBirdIndex: startCategoryIndex,
     };
+    const [newBirdData, setNewBirdData] = useState(firstBird);
         // birdsData[startCategoryIndex]
-    console.log(createNewBird(firstBird))
+    console.log(createNewBird(newBirdData))
     // const newBird = createNewBird(firstBird)
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>
                 <img className='image_bird' src={altBirdImage} alt='bird'/>
-                <AudioPlayerBird />
+                <div className='name_and_audio'>
+                    <p className='current_bird_name'>******</p>
+                    <AudioPlayerBird />
+                </div>
             </div>
         </div>
     )

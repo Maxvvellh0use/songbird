@@ -3,10 +3,17 @@
 
 .current_bird_block {
   @extend %flex_row_space-between;
+  justify-content: left;
+  color: snow;
   height: 100%;
   max-height: 250px;
   border-radius: 5px;
   background: $color-main-blocks;
+}
+
+.current_bird_name {
+  font-size: 30px;
+  margin: 10px;
 }
 
 .image_bird {

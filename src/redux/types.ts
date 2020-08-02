@@ -16,3 +16,14 @@ export interface SystemState {
     }
 }
 
+export interface Props {
+    currentBirdInf: {
+        birdName: string,
+        birdSpecies: string,
+        birdDescription: string,
+        birdImagePath: string,
+        birdAudioPath: string,
+        categoryBirdIndex: number,
+    }
+}
+

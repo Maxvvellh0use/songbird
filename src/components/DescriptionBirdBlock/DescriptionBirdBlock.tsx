@@ -1,20 +1,9 @@
 import React from "react";
 import './description_bird.scss'
 import { connect, ConnectedProps } from "react-redux";
-import { SystemState } from "../../redux/types";
+import { Props, SystemState } from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
 import altBirdImage from '../../assets/img/alt_bird_image.png';
-
-interface Props {
-    currentBirdInf: {
-        birdName: string,
-        birdSpecies: string,
-        birdDescription: string,
-        birdImagePath: string,
-        birdAudioPath: string,
-        categoryBirdIndex: number,
-    }
-}
 
 const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBirdInf}) => {
     const imageBird: string = currentBirdInf.birdImagePath;
