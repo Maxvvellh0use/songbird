@@ -7,17 +7,26 @@ import { getRandomBirdIndex } from "./helpers/getRandomBirdIndex";
 import { createNewBird } from "../../redux/actions";
 import birdsData from "../../data/birdsData";
 import { startCategoryIndex } from "./consts";
+import { SystemState } from "../../redux/types";
 
-interface Props {
+interface PropsWithCreateNewBird {
+    currentBird: {
+        name: string
+        image: string
+    }
+    selectBird: {
+        name: string
+        image: string
+    }
     createNewBird: any
 }
 
-const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
+const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, currentBird, selectBird}) => {
+    console.log(selectBird.name === currentBird.name)
     const randomBirdIndex: number = getRandomBirdIndex();
     const firstBirdData = birdsData[startCategoryIndex][randomBirdIndex];
     const otherBirdsInCategory = birdsData[startCategoryIndex].filter((bird, index) =>
         index !== randomBirdIndex);
-    console.log(otherBirdsInCategory)
     const firstBird = {
         audio: firstBirdData.audio,
         description: firstBirdData.description,
@@ -27,16 +36,18 @@ const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
         species: firstBirdData.species,
         otherBirdsInCategory: otherBirdsInCategory,
     };
-    const [newBirdData, setNewBirdData] = useState(firstBird);
-        // birdsData[startCategoryIndex]
+    const alternativeBird = {
+        name: '******',
+        image: altBirdImage
+    }
+    const [newBirdData] = useState(firstBird);
     createNewBird(newBirdData);
-    // const newBird = createNewBird(firstBird)
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>
-                <img className='image_bird' src={altBirdImage} alt='bird'/>
+                <img className='image_bird' src={currentBird.name === selectBird.name ? currentBird.image : alternativeBird.image} alt='bird'/>
                 <div className='name_and_audio'>
-                    <p className='current_bird_name'>******</p>
+                    <p className='current_bird_name'>{currentBird.name === selectBird.name ? currentBird.name : alternativeBird.name}</p>
                     <AudioPlayerBird />
                 </div>
             </div>
@@ -44,8 +55,28 @@ const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
     )
 }
 
+const mapStateToProps = (state: SystemState) => ({
+    currentBird: {
+        audio: state.currentBird.audio,
+        description: state.currentBird.description,
+        id: state.currentBird.id,
+        image: state.currentBird.image,
+        name: state.currentBird.name,
+        species: state.currentBird.species,
+        otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
+    },
+    selectBird: {
+        audio: state.selectBird.audio,
+        description: state.selectBird.description,
+        id: state.selectBird.id,
+        image: state.selectBird.image,
+        name: state.selectBird.name,
+        species: state.selectBird.species,
+    }
+})
+
 const mapDispatchToProps = {
     createNewBird,
 }
 
-export default connect(null, mapDispatchToProps)(CurrentBirdBlock)
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentBirdBlock)

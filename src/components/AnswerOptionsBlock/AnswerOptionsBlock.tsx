@@ -25,7 +25,6 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
     const firstSixNames: string[] = allBirdsNames.filter((name, index) => index < 6);
     const arrayListState: string[] = new Array(6).fill('');
     const [activeListClass, setActiveListClass] = useState(arrayListState);
-    console.log(activeListClass);
     const checkBird = (event: any) => {
         const targetData = event.target.dataset;
         if (targetData.name === currentBird.name) {
