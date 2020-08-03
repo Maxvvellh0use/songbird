@@ -4,6 +4,7 @@ import DescriptionBirdBlock from "../DescriptionBirdBlock/DescriptionBirdBlock";
 import { Button } from "../Buttons/Button";
 import { Props, SystemState } from "../../redux/types";
 import { connect } from "react-redux";
+import { mapStateToProps } from "../../redux/mapStateToProps";
 
 
 const FunctionalBlock: React.FunctionComponent<Props> = ({currentBird, selectBird}) => {
@@ -32,26 +33,6 @@ const FunctionalBlock: React.FunctionComponent<Props> = ({currentBird, selectBir
             </section>
         )
 }
-
-const mapStateToProps = (state: SystemState) => ({
-    currentBird: {
-        audio: state.currentBird.audio,
-        description: state.currentBird.description,
-        id: state.currentBird.id,
-        image: state.currentBird.image,
-        name: state.currentBird.name,
-        species: state.currentBird.species,
-        otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
-    },
-    selectBird: {
-        audio: state.selectBird.audio,
-        description: state.selectBird.description,
-        id: state.selectBird.id,
-        image: state.selectBird.image,
-        name: state.selectBird.name,
-        species: state.selectBird.species,
-    }
-})
 
 export default connect(mapStateToProps)(FunctionalBlock)
 

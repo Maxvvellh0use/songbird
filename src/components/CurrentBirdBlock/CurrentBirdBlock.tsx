@@ -7,7 +7,7 @@ import { getRandomBirdIndex } from "./helpers/getRandomBirdIndex";
 import { createNewBird } from "../../redux/actions";
 import birdsData from "../../data/birdsData";
 import { startCategoryIndex } from "./consts";
-import { SystemState } from "../../redux/types";
+import { mapStateToProps } from "../../redux/mapStateToProps";
 
 interface PropsWithCreateNewBird {
     currentBird: {
@@ -58,26 +58,6 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, curr
         </div>
     )
 }
-
-const mapStateToProps = (state: SystemState) => ({
-    currentBird: {
-        audio: state.currentBird.audio,
-        description: state.currentBird.description,
-        id: state.currentBird.id,
-        image: state.currentBird.image,
-        name: state.currentBird.name,
-        species: state.currentBird.species,
-        otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
-    },
-    selectBird: {
-        audio: state.selectBird.audio,
-        description: state.selectBird.description,
-        id: state.selectBird.id,
-        image: state.selectBird.image,
-        name: state.selectBird.name,
-        species: state.selectBird.species,
-    }
-})
 
 const mapDispatchToProps = {
     createNewBird,

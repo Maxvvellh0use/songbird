@@ -1,8 +1,8 @@
-import React, {ReactEventHandler, useState} from "react";
+import React, { useState } from "react";
 import './answer-options-block.scss'
 import { getAllBirdsNames } from "../../data/allBirdsNames";
 import { connect } from "react-redux";
-import { SystemState } from "../../redux/types";
+import { mapStateToProps } from "../../redux/mapStateToProps";
 import { selectNewBird } from "../../redux/actions";
 
 interface PropsCurrentSelect {
@@ -76,26 +76,6 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
         </div>
     )
 }
-
-const mapStateToProps = (state: SystemState) => ({
-    currentBird: {
-        audio: state.currentBird.audio,
-        description: state.currentBird.description,
-        id: state.currentBird.id,
-        image: state.currentBird.image,
-        name: state.currentBird.name,
-        species: state.currentBird.species,
-        otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
-    },
-    selectBird: {
-        audio: state.selectBird.audio,
-        description: state.selectBird.description,
-        id: state.selectBird.id,
-        image: state.selectBird.image,
-        name: state.selectBird.name,
-        species: state.selectBird.species,
-    }
-})
 
 const mapDispatchToProps = {
     selectNewBird,

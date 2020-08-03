@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import './description_bird.scss'
-import { connect, ConnectedProps } from "react-redux";
-import { Props, SystemState } from "../../redux/types";
+import { connect } from "react-redux";
+import { Props } from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
+import { mapStateToProps } from "../../redux/mapStateToProps";
 
 const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBird, selectBird}) => {
     const imageBird: string = currentBird.image;
@@ -30,24 +31,5 @@ const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBird, sele
     )
 }
 
-const mapStateToProps = (state: SystemState) => ({
-        currentBird: {
-            audio: state.currentBird.audio,
-            description: state.currentBird.description,
-            id: state.currentBird.id,
-            image: state.currentBird.image,
-            name: state.currentBird.name,
-            species: state.currentBird.species,
-            otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
-        },
-        selectBird: {
-            audio: state.selectBird.audio,
-            description: state.selectBird.description,
-            id: state.selectBird.id,
-            image: state.selectBird.image,
-            name: state.selectBird.name,
-            species: state.selectBird.species,
-        }
-})
 
 export default connect(mapStateToProps)(DescriptionBirdBlock)

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Props, SystemState } from "../../redux/types";
+import { Props } from "../../redux/types";
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
 import pauseButton from '../../assets/svg/pause-button.svg';
@@ -10,6 +10,7 @@ import volumeOff from '../../assets/svg/sound-off.svg';
 import { getCorrectClock } from "./helpers/getCorrectClock";
 import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
+import { mapStateToProps } from "../../redux/mapStateToProps";
 
 const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBird}) => {
     const audioPath: string = currentBird.audio;
@@ -74,26 +75,6 @@ const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBird}) => {
         </div>
     )
 }
-
-const mapStateToProps = (state: SystemState) => ({
-    currentBird: {
-        audio: state.currentBird.audio,
-        description: state.currentBird.description,
-        id: state.currentBird.id,
-        image: state.currentBird.image,
-        name: state.currentBird.name,
-        species: state.currentBird.species,
-        otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
-    },
-    selectBird: {
-        audio: state.selectBird.audio,
-        description: state.selectBird.description,
-        id: state.selectBird.id,
-        image: state.selectBird.image,
-        name: state.selectBird.name,
-        species: state.selectBird.species,
-    }
-})
 
 export default connect(mapStateToProps)(AudioPlayerBird);
 
