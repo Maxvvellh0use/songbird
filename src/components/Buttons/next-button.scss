@@ -4,7 +4,11 @@
   width: 100%;
   margin-top: 10px;
   border-radius: 5px;
-  background: $color-birds-list;
+  background: $color-main-blocks;
   color: snow;
   padding: 5px;
+}
+
+.button_active {
+  background: $color-birds-list;
 }
