@@ -1,39 +1,59 @@
 import React, {ReactEventHandler, useState} from "react";
 import './answer-options-block.scss'
 import { getAllBirdsNames } from "../../data/allBirdsNames";
-import {connect, DispatchProp} from "react-redux";
+import { connect } from "react-redux";
 import { SystemState } from "../../redux/types";
 import { selectNewBird } from "../../redux/actions";
 
 interface PropsCurrentSelect {
-    currentBirdInf: {
-        birdName: string,
-        birdSpecies: string,
-        birdDescription: string,
-        birdImagePath: string,
-        birdAudioPath: string,
-        categoryBirdIndex: number,
-        otherBirdsInCategory: object[];
+    currentBird: {
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+        otherBirdsInCategory: [],
     };
     selectNewBird: any
 }
 
-const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({currentBirdInf, selectNewBird}) => {
+const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({currentBird, selectNewBird}) => {
+    const errorSound: HTMLAudioElement = new Audio(require('../../assets/audio/error-sound.mp3'));
+    const correctSound: HTMLAudioElement = new Audio(require('../../assets/audio/correct-sound.mp3'));
     const allBirdsNames: string[] = getAllBirdsNames();
     const firstSixNames: string[] = allBirdsNames.filter((name, index) => index < 6);
+    const arrayListState: string[] = new Array(6).fill('');
+    const [activeListClass, setActiveListClass] = useState(arrayListState);
+    console.log(activeListClass);
     const checkBird = (event: any) => {
-        if (event.target.dataset.name === currentBirdInf.birdName) {
-            console.log('CORRECT')
+        const targetData = event.target.dataset;
+        if (targetData.name === currentBird.name) {
+            activeListClass.map(() => {
+                activeListClass[targetData.targetIndex] = ' correct';
+                return setActiveListClass(activeListClass);
+            })
+            correctSound.play().then();
+            selectNewBird(currentBird);
         } else {
-            const selectBirdArr = currentBirdInf.otherBirdsInCategory.filter((currentBird: any) =>
-                currentBird.name === event.target.dataset.name);
+            activeListClass.map(() => {
+                activeListClass[targetData.targetIndex] = ' error';
+                return setActiveListClass(activeListClass);
+            })
+            errorSound.play().then();
+            const selectBirdArr = currentBird.otherBirdsInCategory.filter((currentBird: any) =>
+                currentBird.name === targetData.name);
            selectNewBird(...selectBirdArr);
         }
-
-        // if (event.target.dataset.name)
     }
-    const firstSixListItems: JSX.Element[] = firstSixNames.map((name: string) =>
-        <li onClick={checkBird} className='answers_item' key={name} data-name={name}><span>{name}</span></li>)
+    const firstSixListItems: JSX.Element[] = firstSixNames.map((name: string, index) =>
+        <li onClick={checkBird}
+            className='answers_item'
+            key={name}
+            data-target-index={index}
+            data-name={name}><span
+            className={'answers_item__marker' + activeListClass[index]}/>
+            <span className='answers_item__name'>{name}</span></li>)
     return (
         <div className='answer_options_block'>
             <ul className='answers_list'>
@@ -44,15 +64,15 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
 }
 
 const mapStateToProps = (state: SystemState) => ({
-    currentBirdInf: {
-        birdName: state.currentBird.birdName,
-        birdSpecies: state.currentBird.birdSpecies,
-        birdDescription: state.currentBird.birdDescription,
-        birdImagePath: state.currentBird.birdImagePath,
-        birdAudioPath: state.currentBird.birdAudioPath,
-        categoryBirdIndex: state.currentBird.categoryBirdIndex,
+    currentBird: {
+        audio: state.currentBird.audio,
+        description: state.currentBird.description,
+        id: state.currentBird.id,
+        image: state.currentBird.image,
+        name: state.currentBird.name,
+        species: state.currentBird.species,
         otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
-    }
+    },
 })
 
 const mapDispatchToProps = {

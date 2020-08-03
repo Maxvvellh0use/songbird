@@ -7,13 +7,13 @@ export interface CreateNewBirdAction {
 
 export interface SystemState {
     currentBird: {
-        birdName: string,
-        birdSpecies: string,
-        birdDescription: string,
-        birdImagePath: string,
-        birdAudioPath: string,
-        categoryBirdIndex: number,
-        otherBirdsInCategory: object[];
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+        otherBirdsInCategory: [],
     },
     selectBird: {
         audio: string
@@ -25,14 +25,14 @@ export interface SystemState {
     }
 }
 export interface Props {
-    currentBirdInf: {
-        birdName: string,
-        birdSpecies: string,
-        birdDescription: string,
-        birdImagePath: string,
-        birdAudioPath: string,
-        categoryBirdIndex: number,
-        otherBirdsInCategory: object[];
+    currentBird: {
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+        otherBirdsInCategory: [],
     },
     selectBird: {
         audio: string

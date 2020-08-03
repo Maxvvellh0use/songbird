@@ -2,12 +2,12 @@ import { CREATE_NEW_BIRD, SystemState } from "../types";
 
 const initialState: SystemState = {
     currentBird: {
-        birdName: '',
-        birdSpecies: '',
-        birdDescription: '',
-        birdImagePath: '',
-        birdAudioPath: '',
-        categoryBirdIndex: NaN,
+        audio: '',
+        description: '',
+        id: 0,
+        image: '',
+        name: '',
+        species: '',
         otherBirdsInCategory: [],
     },
     selectBird: {

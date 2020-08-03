@@ -11,8 +11,8 @@ import { getCorrectClock } from "./helpers/getCorrectClock";
 import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 
-const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBirdInf}) => {
-    const audioPath: string = currentBirdInf.birdAudioPath;
+const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBird}) => {
+    const audioPath: string = currentBird.audio;
     const birdAudio: HTMLAudioElement = new Audio(audioPath);
     const [audioButtonImage, setAudioButton] = useState(playButton);
     const [birdAudioState] = useState(birdAudio);
@@ -76,13 +76,13 @@ const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBirdInf}) => {
 }
 
 const mapStateToProps = (state: SystemState) => ({
-    currentBirdInf: {
-        birdName: state.currentBird.birdName,
-        birdSpecies: state.currentBird.birdSpecies,
-        birdDescription: state.currentBird.birdDescription,
-        birdImagePath: state.currentBird.birdImagePath,
-        birdAudioPath: state.currentBird.birdAudioPath,
-        categoryBirdIndex: state.currentBird.categoryBirdIndex,
+    currentBird: {
+        audio: state.currentBird.audio,
+        description: state.currentBird.description,
+        id: state.currentBird.id,
+        image: state.currentBird.image,
+        name: state.currentBird.name,
+        species: state.currentBird.species,
         otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
     },
     selectBird: {

@@ -19,13 +19,13 @@ const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
         index !== randomBirdIndex);
     console.log(otherBirdsInCategory)
     const firstBird = {
-        birdName: firstBirdData.name,
-        birdSpecies: firstBirdData.species,
-        birdDescription: firstBirdData.description,
-        birdImagePath: firstBirdData.image,
-        birdAudioPath: firstBirdData.audio,
-        categoryBirdIndex: startCategoryIndex,
-        otherBirdsInCategory,
+        audio: firstBirdData.audio,
+        description: firstBirdData.description,
+        id: 0,
+        image: firstBirdData.image,
+        name: firstBirdData.name,
+        species: firstBirdData.species,
+        otherBirdsInCategory: otherBirdsInCategory,
     };
     const [newBirdData, setNewBirdData] = useState(firstBird);
         // birdsData[startCategoryIndex]

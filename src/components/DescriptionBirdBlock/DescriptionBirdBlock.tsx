@@ -1,19 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import './description_bird.scss'
 import { connect, ConnectedProps } from "react-redux";
 import { Props, SystemState } from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
 
-const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBirdInf, selectBird}) => {
-    const imageBird: string = currentBirdInf.birdImagePath;
-    const nameBird: string = currentBirdInf.birdName;
-    const descriptionBird: string = currentBirdInf.birdDescription;
+const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBird, selectBird}) => {
+    const imageBird: string = currentBird.image;
+    const nameBird: string = currentBird.name;
+    const descriptionBird: string = currentBird.description;
+    const defaultDescriptionState = selectBird.name ? ' hidden' : ''
+    const descriptionBirdState = selectBird.name ? '' : ' hidden';
     return (
         <div className='description_bird_block'>
-            <div className='description_default hidden'>
+            <div className={'description_default' + defaultDescriptionState}>
                 { defaultTextDescriptionBlock }
             </div>
-            <div className='description_bird_block__description'>
+            <div className={'description_bird_block__description' + descriptionBirdState}>
                 <div className='image_and_audio'>
                     <div className='image_container'>
                         <img className='bird_image' src={selectBird.image} alt={selectBird.name}/>
@@ -29,13 +31,13 @@ const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBirdInf, s
 }
 
 const mapStateToProps = (state: SystemState) => ({
-        currentBirdInf: {
-            birdName: state.currentBird.birdName,
-            birdSpecies: state.currentBird.birdSpecies,
-            birdDescription: state.currentBird.birdDescription,
-            birdImagePath: state.currentBird.birdImagePath,
-            birdAudioPath: state.currentBird.birdAudioPath,
-            categoryBirdIndex: state.currentBird.categoryBirdIndex,
+        currentBird: {
+            audio: state.currentBird.audio,
+            description: state.currentBird.description,
+            id: state.currentBird.id,
+            image: state.currentBird.image,
+            name: state.currentBird.name,
+            species: state.currentBird.species,
             otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
         },
         selectBird: {
