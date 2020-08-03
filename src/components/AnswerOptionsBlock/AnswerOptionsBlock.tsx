@@ -15,16 +15,27 @@ interface PropsCurrentSelect {
         species: string,
         otherBirdsInCategory: [],
     };
+    selectBird: {
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+    }
     selectNewBird: any
 }
 
-const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({currentBird, selectNewBird}) => {
+const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({currentBird, selectBird, selectNewBird}) => {
     const errorSound: HTMLAudioElement = new Audio(require('../../assets/audio/error-sound.mp3'));
     const correctSound: HTMLAudioElement = new Audio(require('../../assets/audio/correct-sound.mp3'));
     const allBirdsNames: string[] = getAllBirdsNames();
     const firstSixNames: string[] = allBirdsNames.filter((name, index) => index < 6);
     const arrayListState: string[] = new Array(6).fill('');
     const [activeListClass, setActiveListClass] = useState(arrayListState);
+    const isCorrectBird = () => {
+        return currentBird.name !== selectBird.name
+    }
     const checkBird = (event: any) => {
         const targetData = event.target.dataset;
         if (targetData.name === currentBird.name) {
@@ -46,7 +57,7 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
         }
     }
     const firstSixListItems: JSX.Element[] = firstSixNames.map((name: string, index) =>
-        <li onClick={checkBird}
+        <li onClick={isCorrectBird() ? checkBird : isCorrectBird}
             className='answers_item'
             key={name}
             data-target-index={index}
@@ -76,6 +87,14 @@ const mapStateToProps = (state: SystemState) => ({
         species: state.currentBird.species,
         otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
     },
+    selectBird: {
+        audio: state.selectBird.audio,
+        description: state.selectBird.description,
+        id: state.selectBird.id,
+        image: state.selectBird.image,
+        name: state.selectBird.name,
+        species: state.selectBird.species,
+    }
 })
 
 const mapDispatchToProps = {
