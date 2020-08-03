@@ -3,9 +3,8 @@ import './description_bird.scss'
 import { connect, ConnectedProps } from "react-redux";
 import { Props, SystemState } from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
-import altBirdImage from '../../assets/img/alt_bird_image.png';
 
-const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBirdInf}) => {
+const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBirdInf, selectBird}) => {
     const imageBird: string = currentBirdInf.birdImagePath;
     const nameBird: string = currentBirdInf.birdName;
     const descriptionBird: string = currentBirdInf.birdDescription;
@@ -17,13 +16,13 @@ const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBirdInf}) 
             <div className='description_bird_block__description'>
                 <div className='image_and_audio'>
                     <div className='image_container'>
-                        <img className='bird_image' src={imageBird} alt={nameBird}/>
+                        <img className='bird_image' src={selectBird.image} alt={selectBird.name}/>
                     </div>
                     <div className='audio_block'>
-                        <p className='bird_name'>{nameBird}</p>
+                        <p className='bird_name'>{selectBird.name}</p>
                     </div>
                 </div>
-                <p className='description__bird_description'>{descriptionBird}</p>
+                <p className='description__bird_description'>{selectBird.description}</p>
             </div>
         </div>
     )
@@ -37,6 +36,15 @@ const mapStateToProps = (state: SystemState) => ({
             birdImagePath: state.currentBird.birdImagePath,
             birdAudioPath: state.currentBird.birdAudioPath,
             categoryBirdIndex: state.currentBird.categoryBirdIndex,
+            otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
+        },
+        selectBird: {
+            audio: state.selectBird.audio,
+            description: state.selectBird.description,
+            id: state.selectBird.id,
+            image: state.selectBird.image,
+            name: state.selectBird.name,
+            species: state.selectBird.species,
         }
 })
 

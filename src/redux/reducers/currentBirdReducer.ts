@@ -8,6 +8,15 @@ const initialState: SystemState = {
         birdImagePath: '',
         birdAudioPath: '',
         categoryBirdIndex: NaN,
+        otherBirdsInCategory: [],
+    },
+    selectBird: {
+        audio: '',
+        description: '',
+        id: 0,
+        image: '',
+        name: '',
+        species: '',
     }
 }
 

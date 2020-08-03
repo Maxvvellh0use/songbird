@@ -83,6 +83,15 @@ const mapStateToProps = (state: SystemState) => ({
         birdImagePath: state.currentBird.birdImagePath,
         birdAudioPath: state.currentBird.birdAudioPath,
         categoryBirdIndex: state.currentBird.categoryBirdIndex,
+        otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
+    },
+    selectBird: {
+        audio: state.selectBird.audio,
+        description: state.selectBird.description,
+        id: state.selectBird.id,
+        image: state.selectBird.image,
+        name: state.selectBird.name,
+        species: state.selectBird.species,
     }
 })
 

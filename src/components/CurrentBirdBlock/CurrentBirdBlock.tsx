@@ -9,13 +9,15 @@ import birdsData from "../../data/birdsData";
 import { startCategoryIndex } from "./consts";
 
 interface Props {
-    currentBirdInf?: object;
     createNewBird: any
 }
 
 const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
     const firstBirdData = birdsData[startCategoryIndex][randomBirdIndex];
+    const otherBirdsInCategory = birdsData[startCategoryIndex].filter((bird, index) =>
+        index !== randomBirdIndex);
+    console.log(otherBirdsInCategory)
     const firstBird = {
         birdName: firstBirdData.name,
         birdSpecies: firstBirdData.species,
@@ -23,10 +25,11 @@ const CurrentBirdBlock: React.FunctionComponent<Props> = ({createNewBird}) => {
         birdImagePath: firstBirdData.image,
         birdAudioPath: firstBirdData.audio,
         categoryBirdIndex: startCategoryIndex,
+        otherBirdsInCategory,
     };
     const [newBirdData, setNewBirdData] = useState(firstBird);
         // birdsData[startCategoryIndex]
-    console.log(createNewBird(newBirdData))
+    createNewBird(newBirdData);
     // const newBird = createNewBird(firstBird)
     return (
         <div className='wrapper'>
