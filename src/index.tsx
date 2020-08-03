@@ -1,11 +1,11 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import './style/index.scss';
-import {App} from './App';
+import { App } from './App';
 import 'bootstrap/dist/css/bootstrap.css';
-import {compose, createStore} from "redux";
-import {Provider} from 'react-redux';
-import {rootReducer} from "./redux/rootReducer";
+import { compose, createStore } from "redux";
+import { Provider } from 'react-redux';
+import { rootReducer } from "./redux/rootReducer";
 
 // @ts-ignore
 const {__REDUX_DEVTOOLS_EXTENSION__} = window;

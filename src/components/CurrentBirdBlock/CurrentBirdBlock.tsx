@@ -39,6 +39,9 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, curr
         name: '******',
         image: altBirdImage
     }
+    const isCorrectBird = () => {
+        return currentBird.name === selectBird.name
+    }
     const [newBirdData] = useState(firstBird);
     createNewBird(newBirdData);
     return (
@@ -46,11 +49,11 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, curr
             <div className='current_bird_block'>
                 <div className='image_bird_container'>
                     <img className='image_bird'
-                         src={currentBird.name === selectBird.name ? currentBird.image : alternativeBird.image}
+                         src={isCorrectBird() ? currentBird.image : alternativeBird.image}
                          alt='bird'/>
                 </div>
                 <div className='name_and_audio'>
-                    <p className='current_bird_name'>{currentBird.name === selectBird.name ?
+                    <p className='current_bird_name'>{isCorrectBird() ?
                         currentBird.name : alternativeBird.name}</p>
                     <AudioPlayerBird />
                 </div>
