@@ -50,9 +50,13 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
             className='answers_item'
             key={name}
             data-target-index={index}
-            data-name={name}><span
-            className={'answers_item__marker' + activeListClass[index]}/>
-            <span className='answers_item__name'>{name}</span></li>)
+            data-name={name}>
+            <span className={'answers_item__marker' + activeListClass[index]}
+                  data-name={name}
+                  data-target-index={index}/>
+            <span className='answers_item__name'
+                  data-name={name}
+                  data-target-index={index}>{name}</span></li>)
     return (
         <div className='answer_options_block'>
             <ul className='answers_list'>
