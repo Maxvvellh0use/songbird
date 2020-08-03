@@ -3,8 +3,13 @@ import { Props, SystemState } from "../../redux/types";
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
 import pauseButton from '../../assets/svg/pause-button.svg';
+import volumeFull from '../../assets/svg/volume-full.svg';
+import volumeMedium from '../../assets/svg/volume-meduim.svg';
+import volumeLow from '../../assets/svg/volume-low.svg';
+import volumeOff from '../../assets/svg/sound-off.svg';
 import { getCorrectClock } from "./helpers/getCorrectClock";
 import { getPercent } from "./helpers/getPercent";
+import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 
 const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBirdInf}) => {
     const audioPath: string = currentBirdInf.birdAudioPath;
@@ -20,9 +25,9 @@ const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBirdInf}) => {
             setTimeout(function timerAudio() {
                 setStartTime(birdAudioState.currentTime);
                 if (!birdAudioState.paused) {
-                    setTimeout(timerAudio, 1000);
+                    setTimeout(timerAudio, defaultTimeout);
                 }
-            }, 1000);
+            }, defaultTimeout);
             setAudioButton(pauseButton);
             const correctFullTime: string = getCorrectClock(birdAudioState.duration)
             setFullTimeState(correctFullTime);
@@ -31,6 +36,25 @@ const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBirdInf}) => {
             setAudioButton(playButton);
         }
     }
+    const [volumeValueState, setVolumeValueState] = useState(startVolume);
+    birdAudioState.volume = volumeValueState / volumeCoefficient;
+    const [volumeImageState, setVolumeImageState] = useState(volumeMedium);
+    const volumeControl = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const currentValue: number = +(event.target.value);
+        if (currentValue > 90) {
+            setVolumeImageState(volumeFull)
+        } else if (currentValue > 50 && currentValue < 90) {
+            setVolumeImageState(volumeMedium)
+        } else if (currentValue > 20 && currentValue < 50) {
+            setVolumeImageState(volumeLow)
+        } else if (currentValue === 0) {
+            setVolumeImageState(volumeOff)
+        }
+        setVolumeValueState(currentValue);
+    }
+    birdAudioState.addEventListener('ended', () => {
+        setAudioButton(playButton);
+    })
     return (
         <div className='audio_player_container'>
             <img onClick={playAudio} className='play_pause_button' src={audioButtonImage} alt='play button'/>
@@ -42,6 +66,10 @@ const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBirdInf}) => {
                     <p className='start_time'>00:{startTime < 10 ? '0' + startTime : startTime}</p>
                     <p className='full_time'>{fullTimeState}</p>
                 </div>
+            </div>
+            <div className='audio_player__volume'>
+                <img className='volume_icon' src={volumeImageState} alt='sound'/>
+                <input onChange={volumeControl} value={volumeValueState} className='volume' type="range"/>
             </div>
         </div>
     )

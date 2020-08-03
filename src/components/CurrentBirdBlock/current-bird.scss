@@ -1,5 +1,6 @@
 @import "../../style/constants";
 @import "../../style/placeholders";
+@import "volume-slider";
 
 .current_bird_block {
   @extend %flex_row_space-between;
@@ -66,3 +67,20 @@
   @extend %flex_row_space-between;
   height: 15px;
 }
+
+.audio_player__volume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume {
+  margin-left: 10px;
+}
+
+.volume_icon {
+  width: 40px;
+}
+
+
+
