@@ -10,23 +10,45 @@ import volumeOff from '../../assets/svg/sound-off.svg';
 import { getCorrectClock } from "./helpers/getCorrectClock";
 import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
+import { mapStateToProps } from "../../redux/mapStateToProps";
 
 interface AudioProps {
     audioBird: HTMLAudioElement,
+    selectAudioBird: HTMLAudioElement,
+    currentBird: {
+        name: string,
+    },
+    selectBird: {
+        name: string,
+    },
+    thumb: {
+        button: string,
+        timeBar: string,
+        container: string,
+        timeBarContainer: string,
+        timeBarBackground: string,
+    }
 }
 
-const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird}) => {
+const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, selectAudioBird, thumb, currentBird, selectBird}) => {
     const [audioButtonImage, setAudioButton] = useState(playButton);
     const [birdAudioState, setBirdAudioState] = useState(audioBird);
     birdAudioState.addEventListener('pause', () => {
         setAudioButton(playButton);
     })
     useEffect(() => {
-        if (birdAudioState !== audioBird) {
+        console.log(currentBird.name === selectBird.name)
+        setBirdAudioState(audioBird)
+        // if (currentBird.name === selectBird.name) {
+        //     console.log(birdAudioState)
+        //     birdAudioState.pause();
+        // }
+        if (currentBird.name === selectBird.name) {
             birdAudioState.pause();
         }
         setBirdAudioState(audioBird)
-    }, [birdAudioState, audioBird])
+
+    }, [birdAudioState, audioBird, currentBird, selectBird])
     const startTime: number = Math.round(birdAudioState.currentTime);
     const [startTimeState, setStartTime] = useState(startTime);
     const [fullTimeState, setFullTimeState] = useState('00:00');
@@ -67,11 +89,15 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird}) => {
         setAudioButton(playButton);
     })
     return (
-        <div className='audio_player_container'>
-            <img onClick={playAudio} className='play_pause_button' src={audioButtonImage} alt='play button'/>
-            <div className='audio_player__timebar'>
-                <div className='timebar'>
-                    <div style={{background: '#6286BD', width: getPercent(startTimeState/birdAudioState.duration)}} className='timebar_background'/>
+        <div className={'audio_player_container' + thumb.container}>
+            <img onClick={playAudio}
+                 className={'play_pause_button' + thumb.button}
+                 src={audioButtonImage}
+                 alt='play button'/>
+            <div className={'audio_player__timebar' + thumb.timeBarContainer}>
+                <div className={'timebar' + thumb.timeBar}>
+                    <div style={{background: '#6286BD', width: getPercent(startTimeState/birdAudioState.duration)}}
+                         className={'timebar_background' + thumb.timeBarBackground}/>
                 </div>
                 <div className='time'>
                     <p className='start_time'>00:{startTime < 10 ? '0' + startTime : startTime}</p>
@@ -86,6 +112,6 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird}) => {
     )
 }
 
-export default AudioPlayerBird;
+export default connect(mapStateToProps)(AudioPlayerBird);
 
 

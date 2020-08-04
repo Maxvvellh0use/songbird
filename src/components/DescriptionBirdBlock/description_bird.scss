@@ -36,9 +36,22 @@
   border-radius: 10px;
 }
 
+.audio_block {
+  width: 100%;
+  max-width: 250px;
+}
+
 .bird_name {
+  margin-bottom: 0;
   font-size: 30px;
   margin-left: 20px;
+}
+
+.bird_species {
+  display: block;
+  width: 100%;
+  margin-left: 20px;
+  padding-bottom: 10px;
 }
 
 .description_bird_block__description {
@@ -48,6 +61,27 @@
 .description__bird_description {
   margin-top: 10px;
   max-height: 96px;
+}
+
+.container_thumb {
+  margin-left: 20px;
+}
+
+.button_thumb {
+  width: 50px;
+}
+
+.timeBar_thumb {
+  width: 170px;
+  height: 7px;
+}
+
+.timeBar_container {
+  margin-left: 10px;
+}
+
+.timeBar_thumb_background {
+  height: 7px;
 }
 
 .hidden {
