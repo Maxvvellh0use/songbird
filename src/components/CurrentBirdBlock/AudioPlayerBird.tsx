@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {SystemState} from "../../redux/types";
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
@@ -10,13 +10,23 @@ import volumeOff from '../../assets/svg/sound-off.svg';
 import { getCorrectClock } from "./helpers/getCorrectClock";
 import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
-import { mapStateToProps } from "../../redux/mapStateToProps";
 
-const AudioPlayerBird: React.FunctionComponent<SystemState> = ({currentBird}) => {
-    const [audioPathState] = useState(currentBird.audio)
-    const birdAudio: HTMLAudioElement = new Audio(audioPathState);
+interface AudioProps {
+    audioBird: HTMLAudioElement,
+}
+
+const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird}) => {
     const [audioButtonImage, setAudioButton] = useState(playButton);
-    const [birdAudioState] = useState(birdAudio);
+    const [birdAudioState, setBirdAudioState] = useState(audioBird);
+    birdAudioState.addEventListener('pause', () => {
+        setAudioButton(playButton);
+    })
+    useEffect(() => {
+        if (birdAudioState !== audioBird) {
+            birdAudioState.pause();
+        }
+        setBirdAudioState(audioBird)
+    }, [birdAudioState, audioBird])
     const startTime: number = Math.round(birdAudioState.currentTime);
     const [startTimeState, setStartTime] = useState(startTime);
     const [fullTimeState, setFullTimeState] = useState('00:00');
@@ -76,6 +86,6 @@ const AudioPlayerBird: React.FunctionComponent<SystemState> = ({currentBird}) =>
     )
 }
 
-export default connect(mapStateToProps)(AudioPlayerBird);
+export default AudioPlayerBird;
 
 

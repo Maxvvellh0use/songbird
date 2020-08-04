@@ -9,6 +9,7 @@ import {createNewBird, nextCategoryBird, selectNewBird} from "../../redux/action
 import birdsData from "../../data/birdsData";
 import {getRandomBirdIndex} from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
 import {defaultSelectList} from "../../redux/consts";
+import {increaseCoefficient, startIndex} from "./consts";
 
 interface PropsCategoryBird {
     currentBird: {
@@ -39,7 +40,7 @@ interface PropsCategoryBird {
 
 const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewBird, categoryBird, nextCategoryBird, currentBird, selectBird, createNewBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
-    const [categoryBirdState, setCategoryBirdState] = useState(1);
+    const [categoryBirdState, setCategoryBirdState] = useState(startIndex);
     const isCorrectBird = () => {
             return {
                 disabled: currentBird.name !== selectBird.name,
@@ -47,7 +48,7 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
             }
     }
     const nextLevelHandler = () => {
-        setCategoryBirdState(categoryBirdState + 1)
+        setCategoryBirdState(categoryBirdState + increaseCoefficient)
         const firstBirdData = birdsData[categoryBirdState][randomBirdIndex];
         const otherBirdsInCategory = birdsData[categoryBirdState].filter((bird, index) =>
             index !== randomBirdIndex);
@@ -62,7 +63,7 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
         };
         const category = {
             categoryIndex: categoryBirdState,
-            score: 0
+            score: 0,
         }
         const defaultSelect = {
             activeListClass: defaultSelectList,
