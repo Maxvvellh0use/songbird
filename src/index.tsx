@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { compose, createStore } from "redux";
 import { Provider } from 'react-redux';
 import { rootReducer } from "./redux/rootReducer";
-import {initialState} from "./redux/reducers/nextCategoryBirdReducer";
+import { initialState } from "./redux/reducers/nextCategoryBirdReducer";
 
 const store = createStore(rootReducer, initialState)
 

@@ -26,6 +26,7 @@ interface PropsWithCreateNewBird {
         image: string,
         name: string,
         species: string,
+        activeListClass: string[],
     },
     categoryBird: {
         categoryIndex: number
@@ -34,21 +35,7 @@ interface PropsWithCreateNewBird {
     createNewBird: any
 }
 
-const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, categoryBird, selectBird,currentBird}) => {
-    const randomBirdIndex: number = getRandomBirdIndex();
-
-    const firstBirdData = birdsData[categoryBird.categoryIndex][randomBirdIndex];
-    const otherBirdsInCategory = birdsData[categoryBird.categoryIndex].filter((bird, index) =>
-        index !== randomBirdIndex);
-    // const firstBird = {
-    //     audio: firstBirdData.audio,
-    //     description: firstBirdData.description,
-    //     id: 0,
-    //     image: firstBirdData.image,
-    //     name: firstBirdData.name,
-    //     species: firstBirdData.species,
-    //     otherBirdsInCategory: otherBirdsInCategory,
-    // };
+const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, currentBird}) => {
     const alternativeBird = {
         name: '******',
         image: altBirdImage
@@ -56,8 +43,6 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, cate
     const isCorrectBird = () => {
         return currentBird.name === selectBird.name
     }
-    // const [newBirdData] = useState(firstBird);
-    // createNewBird(newBirdData);
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>

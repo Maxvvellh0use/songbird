@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import './answer-options-block.scss'
 import { getAllBirdsNames } from "../../data/allBirdsNames";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import { selectNewBird } from "../../redux/actions";
+import {defaultSelectList} from "../../redux/consts";
 
 interface PropsCurrentSelect {
     currentBird: {
@@ -13,7 +14,7 @@ interface PropsCurrentSelect {
         image: string,
         name: string,
         species: string,
-        otherBirdsInCategory: [],
+        otherBirdsInCategory: object[],
     },
     selectBird: {
         audio: string,
@@ -22,6 +23,7 @@ interface PropsCurrentSelect {
         image: string,
         name: string,
         species: string,
+        activeListClass: string[],
     },
     categoryBird: {
         categoryIndex: number
@@ -35,34 +37,27 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({select
     const correctSound: HTMLAudioElement = new Audio(require('../../assets/audio/correct-sound.mp3'));
     const allBirdsNames: [][] = getAllBirdsNames();
     const firstSixNames: string[] = allBirdsNames[categoryBird.categoryIndex];
-    const arrayListState: string[] = new Array(6).fill('');
-    const [activeListClass, setActiveListClass] = useState(arrayListState);
     const isCorrectBird = () => {
         return currentBird.name !== selectBird.name
     }
     const checkBird = (event: any) => {
+        const defaultClassValue = ['', '', '', '', '', ''];
+        const activeListClass = selectBird.activeListClass.every(elem => elem === '') ? defaultClassValue : selectBird.activeListClass;
+        const newSelect = {
+            activeListClass: activeListClass
+        }
         const targetData = event.target.dataset;
         if (targetData.name === currentBird.name) {
-            activeListClass.map(() => {
-                activeListClass[targetData.targetIndex] = ' correct';
-                return setActiveListClass(activeListClass);
-            })
+            activeListClass.map(() => activeListClass[targetData.targetIndex] = ' correct');
             correctSound.play().then();
-            selectNewBird(currentBird);
+            Object.assign(newSelect, currentBird)
+            selectNewBird(newSelect);
         } else {
-            activeListClass.map(() => {
-                activeListClass[targetData.targetIndex] = ' error';
-                return setActiveListClass(activeListClass);
-            })
+            activeListClass.map(() => activeListClass[targetData.targetIndex] = ' error');
             errorSound.play().then();
-
             const selectBirdArr = currentBird.otherBirdsInCategory.filter((currentBird: any) =>
                 currentBird.name === targetData.name);
-            const newSelect = {
-                categoryBird: {
-                    selectBird: {...selectBirdArr},
-                }
-            }
+            Object.assign(newSelect, ...selectBirdArr)
             selectNewBird(newSelect);
         }
     }
@@ -72,7 +67,7 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({select
             key={name}
             data-target-index={index}
             data-name={name}>
-            <span className={'answers_item__marker' + activeListClass[index]}
+            <span className={'answers_item__marker' + selectBird.activeListClass[index]}
                   data-name={name}
                   data-target-index={index}/>
             <span className='answers_item__name'
@@ -91,5 +86,4 @@ const mapDispatchToProps = {
     selectNewBird,
 }
 
-// @ts-ignore
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerOptionsBlock);

@@ -8,6 +8,7 @@ import {mapStateToProps} from "../../redux/mapStateToProps";
 import {createNewBird, nextCategoryBird, selectNewBird} from "../../redux/actions";
 import birdsData from "../../data/birdsData";
 import {getRandomBirdIndex} from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
+import {defaultSelectList} from "../../redux/consts";
 
 interface PropsCategoryBird {
     currentBird: {
@@ -45,7 +46,6 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
                 buttonActiveClass: currentBird.name !== selectBird.name ? '' : ' button_active',
             }
     }
-    console.log(categoryBird)
     const nextLevelHandler = () => {
         setCategoryBirdState(categoryBirdState + 1)
         const firstBirdData = birdsData[categoryBirdState][randomBirdIndex];
@@ -65,6 +65,7 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
             score: 0
         }
         const defaultSelect = {
+            activeListClass: defaultSelectList,
             audio: '',
             description: '',
             id: 0,
@@ -75,7 +76,6 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
         nextCategoryBird(category)
         createNewBird(firstBird)
         selectNewBird(defaultSelect)
-
     }
 
         return (

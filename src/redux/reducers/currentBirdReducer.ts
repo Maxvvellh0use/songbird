@@ -1,4 +1,5 @@
 import { CREATE_NEW_BIRD, SystemState } from "../types";
+import {defaultSelectList} from "../consts";
 
 const initialState: SystemState = {
     currentBird: {
@@ -17,6 +18,7 @@ const initialState: SystemState = {
         image: '',
         name: '',
         species: '',
+        activeListClass: defaultSelectList,
     },
     categoryBird: {
         categoryIndex: 0,

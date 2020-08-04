@@ -17,6 +17,7 @@ export const mapStateToProps = (state: SystemState) => ({
         image: state.selectBird.image,
         name: state.selectBird.name,
         species: state.selectBird.species,
+        activeListClass: state.selectBird.activeListClass,
     },
     categoryBird: {
         categoryIndex: state.categoryBird.categoryIndex,

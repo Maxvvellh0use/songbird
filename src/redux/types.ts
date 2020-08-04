@@ -22,6 +22,7 @@ export interface SystemState {
         image: string,
         name: string,
         species: string,
+        activeListClass: string[],
     },
     categoryBird: {
         categoryIndex: number
@@ -45,6 +46,7 @@ export interface SelectBird {
         image: string
         name: string
         species: string
+        activeListClass: string[],
     }
 }
 

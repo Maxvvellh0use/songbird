@@ -1,4 +1,5 @@
 import { SELECT_BIRD, SelectBird } from "../types";
+import {defaultSelectList} from "../consts";
 
 const initialState: SelectBird = {
     selectBird: {
@@ -8,6 +9,7 @@ const initialState: SelectBird = {
         image: '',
         name: '',
         species: '',
+        activeListClass: defaultSelectList,
     }
 }
 

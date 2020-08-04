@@ -2,6 +2,7 @@ import { NEXT_CATEGORY_BIRD, NextCategoryBird, SystemState } from "../types";
 import birdsData from "../../data/birdsData";
 import { startCategoryIndex } from "../../components/CurrentBirdBlock/consts";
 import { getRandomBirdIndex } from "../../components/CurrentBirdBlock/helpers/getRandomBirdIndex";
+import {defaultSelectList} from "../consts";
 
 const randomBirdIndex: number = getRandomBirdIndex();
 const firstBirdData = birdsData[startCategoryIndex][randomBirdIndex];
@@ -19,6 +20,7 @@ export const initialState: SystemState = {
         otherBirdsInCategory: otherBirdsInCategory,
     },
     selectBird: {
+        activeListClass: ['', '', '', '', '', ''],
         audio: '',
         description: '',
         id: 0,
