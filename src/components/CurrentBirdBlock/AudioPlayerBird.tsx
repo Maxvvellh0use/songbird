@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {SystemState} from "../../redux/types";
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
@@ -13,8 +13,8 @@ import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 
 const AudioPlayerBird: React.FunctionComponent<SystemState> = ({currentBird}) => {
-    const audioPath: string = currentBird.audio;
-    const birdAudio: HTMLAudioElement = new Audio(audioPath);
+    const [audioPathState] = useState(currentBird.audio)
+    const birdAudio: HTMLAudioElement = new Audio(audioPathState);
     const [audioButtonImage, setAudioButton] = useState(playButton);
     const [birdAudioState] = useState(birdAudio);
     const startTime: number = Math.round(birdAudioState.currentTime);

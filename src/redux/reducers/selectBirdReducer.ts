@@ -14,7 +14,6 @@ const initialState: SelectBird = {
 export const selectBirdReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case SELECT_BIRD:
-            console.log(action.payload)
             return action.payload
         default: return state
     }

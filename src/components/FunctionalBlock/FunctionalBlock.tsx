@@ -5,7 +5,9 @@ import { Button } from "../Buttons/Button";
 import { SystemState } from "../../redux/types";
 import { connect } from "react-redux";
 import {mapStateToProps} from "../../redux/mapStateToProps";
-import  { nextCategoryBird } from "../../redux/actions";
+import {createNewBird, nextCategoryBird, selectNewBird} from "../../redux/actions";
+import birdsData from "../../data/birdsData";
+import {getRandomBirdIndex} from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
 
 interface PropsCategoryBird {
     currentBird: {
@@ -29,12 +31,13 @@ interface PropsCategoryBird {
         categoryIndex: number
         score: number
     }
-    nextCategoryBird: any;
+    nextCategoryBird: any,
+    createNewBird: any,
+    selectNewBird: any
 }
 
-const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({nextCategoryBird, currentBird, selectBird}) => {
-
-
+const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewBird, categoryBird, nextCategoryBird, currentBird, selectBird, createNewBird}) => {
+    const randomBirdIndex: number = getRandomBirdIndex();
     const [categoryBirdState, setCategoryBirdState] = useState(1);
     const isCorrectBird = () => {
             return {
@@ -42,16 +45,37 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({nextCatego
                 buttonActiveClass: currentBird.name !== selectBird.name ? '' : ' button_active',
             }
     }
+    console.log(categoryBird)
     const nextLevelHandler = () => {
-        console.log('NEXT')
         setCategoryBirdState(categoryBirdState + 1)
+        const firstBirdData = birdsData[categoryBirdState][randomBirdIndex];
+        const otherBirdsInCategory = birdsData[categoryBirdState].filter((bird, index) =>
+            index !== randomBirdIndex);
+        const firstBird = {
+            audio: firstBirdData.audio,
+            description: firstBirdData.description,
+            id: 0,
+            image: firstBirdData.image,
+            name: firstBirdData.name,
+            species: firstBirdData.species,
+            otherBirdsInCategory: otherBirdsInCategory,
+        };
         const category = {
-            categoryBird: {
-                categoryIndex: categoryBirdState,
-                    score: 0
+            categoryIndex: categoryBirdState,
+            score: 0
         }
+        const defaultSelect = {
+            audio: '',
+            description: '',
+            id: 0,
+            image: '',
+            name: '',
+            species: '',
         }
         nextCategoryBird(category)
+        createNewBird(firstBird)
+        selectNewBird(defaultSelect)
+
     }
 
         return (
@@ -72,7 +96,8 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({nextCatego
 }
 
 const mapDispatchToProps = {
-    nextCategoryBird
+    createNewBird, nextCategoryBird,
+    selectNewBird
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FunctionalBlock)
