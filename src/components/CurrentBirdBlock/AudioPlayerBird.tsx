@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Props } from "../../redux/types";
+import {SystemState} from "../../redux/types";
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
 import pauseButton from '../../assets/svg/pause-button.svg';
@@ -12,7 +12,7 @@ import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 
-const AudioPlayerBird: React.FunctionComponent<Props> = ({currentBird}) => {
+const AudioPlayerBird: React.FunctionComponent<SystemState> = ({currentBird}) => {
     const audioPath: string = currentBird.audio;
     const birdAudio: HTMLAudioElement = new Audio(audioPath);
     const [audioButtonImage, setAudioButton] = useState(playButton);

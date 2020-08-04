@@ -11,20 +11,33 @@ import { mapStateToProps } from "../../redux/mapStateToProps";
 
 interface PropsWithCreateNewBird {
     currentBird: {
-        name: string
-        image: string
-    }
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+        otherBirdsInCategory: object[],
+    },
     selectBird: {
-        name: string
-        image: string
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+    },
+    categoryBird: {
+        categoryIndex: number
+        score: number
     }
     createNewBird: any
 }
 
-const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, currentBird, selectBird}) => {
+const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({createNewBird, categoryBird, selectBird,currentBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
-    const firstBirdData = birdsData[startCategoryIndex][randomBirdIndex];
-    const otherBirdsInCategory = birdsData[startCategoryIndex].filter((bird, index) =>
+    const firstBirdData = birdsData[categoryBird.categoryIndex][randomBirdIndex];
+    const otherBirdsInCategory = birdsData[categoryBird.categoryIndex].filter((bird, index) =>
         index !== randomBirdIndex);
     const firstBird = {
         audio: firstBirdData.audio,

@@ -2,7 +2,7 @@ export const CREATE_NEW_BIRD: string = 'CURRENT_BIRD/CREATE_NEW_BIRD';
 
 export interface CreateNewBirdAction {
     type: typeof CREATE_NEW_BIRD
-    payload: Props
+    payload: SystemState
 }
 
 export interface SystemState {
@@ -13,34 +13,19 @@ export interface SystemState {
         image: string,
         name: string,
         species: string,
-        otherBirdsInCategory: [],
+        otherBirdsInCategory: object[],
     },
     selectBird: {
-        audio: string
-        description: string
-        id: number
-        image: string
-        name: string
-        species: string
-    }
-}
-export interface Props {
-    currentBird: {
         audio: string,
         description: string,
         id: number,
         image: string,
         name: string,
         species: string,
-        otherBirdsInCategory: [],
     },
-    selectBird: {
-        audio: string
-        description: string
-        id: number
-        image: string
-        name: string
-        species: string
+    categoryBird: {
+        categoryIndex: number
+        score: number
     }
 }
 
@@ -48,7 +33,7 @@ export const SELECT_BIRD: string = 'SELECT_BIRD';
 
 export interface SelectBirdAction {
     type: typeof SELECT_BIRD
-    payload: Props
+    payload: SystemState
 }
 
 
@@ -62,3 +47,18 @@ export interface SelectBird {
         species: string
     }
 }
+
+export const NEXT_CATEGORY_BIRD: string = 'NEXT_CATEGORY_BIRD';
+
+export interface NextCategoryBirdAction {
+    type: typeof NEXT_CATEGORY_BIRD
+    payload: SystemState
+}
+
+export interface NextCategoryBird {
+    categoryBird: {
+        categoryIndex: number
+        score: number
+    }
+}
+

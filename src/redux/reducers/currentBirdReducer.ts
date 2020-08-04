@@ -17,6 +17,10 @@ const initialState: SystemState = {
         image: '',
         name: '',
         species: '',
+    },
+    categoryBird: {
+        categoryIndex: 0,
+        score: 0
     }
 }
 

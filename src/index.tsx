@@ -6,12 +6,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { compose, createStore } from "redux";
 import { Provider } from 'react-redux';
 import { rootReducer } from "./redux/rootReducer";
+import {initialState} from "./redux/reducers/nextCategoryBirdReducer";
 
-// @ts-ignore
-const {__REDUX_DEVTOOLS_EXTENSION__} = window;
-const store = createStore(rootReducer, compose(
-    __REDUX_DEVTOOLS_EXTENSION__ && __REDUX_DEVTOOLS_EXTENSION__()
-))
+const store = createStore(rootReducer, initialState)
 
 const app: JSX.Element = (
     <Provider store={store}>

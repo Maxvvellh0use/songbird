@@ -1,4 +1,4 @@
-import { SystemState } from "./types";
+import {NextCategoryBird, SystemState} from "./types";
 
 export const mapStateToProps = (state: SystemState) => ({
     currentBird: {
@@ -17,5 +17,9 @@ export const mapStateToProps = (state: SystemState) => ({
         image: state.selectBird.image,
         name: state.selectBird.name,
         species: state.selectBird.species,
-    }
+    },
+    categoryBird: {
+        categoryIndex: state.categoryBird.categoryIndex,
+        score: state.categoryBird.score,
+    },
 })

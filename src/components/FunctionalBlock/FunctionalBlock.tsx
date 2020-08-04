@@ -1,13 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import AnswerOptionsBlock from "../AnswerOptionsBlock/AnswerOptionsBlock";
 import DescriptionBirdBlock from "../DescriptionBirdBlock/DescriptionBirdBlock";
 import { Button } from "../Buttons/Button";
-import { Props, SystemState } from "../../redux/types";
+import { SystemState } from "../../redux/types";
 import { connect } from "react-redux";
-import { mapStateToProps } from "../../redux/mapStateToProps";
+import {mapStateToProps} from "../../redux/mapStateToProps";
+import  { nextCategoryBird } from "../../redux/actions";
+
+interface PropsCategoryBird {
+    currentBird: {
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+        otherBirdsInCategory: object[],
+    },
+    selectBird: {
+        audio: string,
+        description: string,
+        id: number,
+        image: string,
+        name: string,
+        species: string,
+    },
+    categoryBird: {
+        categoryIndex: number
+        score: number
+    }
+    nextCategoryBird: any;
+}
+
+const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({nextCategoryBird, currentBird, selectBird}) => {
 
 
-const FunctionalBlock: React.FunctionComponent<Props> = ({currentBird, selectBird}) => {
+    const [categoryBirdState, setCategoryBirdState] = useState(1);
     const isCorrectBird = () => {
             return {
                 disabled: currentBird.name !== selectBird.name,
@@ -15,8 +43,17 @@ const FunctionalBlock: React.FunctionComponent<Props> = ({currentBird, selectBir
             }
     }
     const nextLevelHandler = () => {
-        return true
+        console.log('NEXT')
+        setCategoryBirdState(categoryBirdState + 1)
+        const category = {
+            categoryBird: {
+                categoryIndex: categoryBirdState,
+                    score: 0
+        }
+        }
+        nextCategoryBird(category)
     }
+
         return (
             <section className='functional_section'>
                 <div className='wrapper wrapper_functional_block'>
@@ -34,6 +71,10 @@ const FunctionalBlock: React.FunctionComponent<Props> = ({currentBird, selectBir
         )
 }
 
-export default connect(mapStateToProps)(FunctionalBlock)
+const mapDispatchToProps = {
+    nextCategoryBird
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FunctionalBlock)
 
 

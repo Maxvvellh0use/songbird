@@ -14,7 +14,7 @@ interface PropsCurrentSelect {
         name: string,
         species: string,
         otherBirdsInCategory: [],
-    };
+    },
     selectBird: {
         audio: string,
         description: string,
@@ -22,20 +22,26 @@ interface PropsCurrentSelect {
         image: string,
         name: string,
         species: string,
+    },
+    categoryBird: {
+        categoryIndex: number
+        score: number
     }
     selectNewBird: any
 }
 
-const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({currentBird, selectBird, selectNewBird}) => {
+const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({selectNewBird, currentBird, selectBird}) => {
     const errorSound: HTMLAudioElement = new Audio(require('../../assets/audio/error-sound.mp3'));
     const correctSound: HTMLAudioElement = new Audio(require('../../assets/audio/correct-sound.mp3'));
     const allBirdsNames: string[] = getAllBirdsNames();
     const firstSixNames: string[] = allBirdsNames.filter((name, index) => index < 6);
     const arrayListState: string[] = new Array(6).fill('');
     const [activeListClass, setActiveListClass] = useState(arrayListState);
+
     const isCorrectBird = () => {
         return currentBird.name !== selectBird.name
     }
+    console.log(selectBird.name)
     const checkBird = (event: any) => {
         const targetData = event.target.dataset;
         if (targetData.name === currentBird.name) {
@@ -44,6 +50,7 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
                 return setActiveListClass(activeListClass);
             })
             correctSound.play().then();
+            console.log(currentBird)
             selectNewBird(currentBird);
         } else {
             activeListClass.map(() => {
@@ -51,9 +58,15 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({curren
                 return setActiveListClass(activeListClass);
             })
             errorSound.play().then();
+
             const selectBirdArr = currentBird.otherBirdsInCategory.filter((currentBird: any) =>
                 currentBird.name === targetData.name);
-           selectNewBird(...selectBirdArr);
+            const newSelect = {
+                categoryBird: {
+                    selectBird: {...selectBirdArr},
+                }
+            }
+            console.log(selectNewBird(newSelect))
         }
     }
     const firstSixListItems: JSX.Element[] = firstSixNames.map((name: string, index) =>
@@ -81,4 +94,5 @@ const mapDispatchToProps = {
     selectNewBird,
 }
 
+// @ts-ignore
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerOptionsBlock);

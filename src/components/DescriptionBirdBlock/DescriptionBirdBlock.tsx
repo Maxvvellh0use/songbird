@@ -1,11 +1,12 @@
 import React from "react";
 import './description_bird.scss'
 import { connect } from "react-redux";
-import { Props } from "../../redux/types";
+import {SystemState} from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 
-const DescriptionBirdBlock: React.FunctionComponent<Props> = ({currentBird, selectBird}) => {
+const DescriptionBirdBlock: React.FunctionComponent<SystemState> = ({ selectBird, currentBird}) => {
+    console.log(selectBird)
     const imageBird: string = currentBird.image;
     const nameBird: string = currentBird.name;
     const descriptionBird: string = currentBird.description;
