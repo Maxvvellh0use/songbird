@@ -1,0 +1,9 @@
+@import "../../style/placeholders";
+@import "../../style/constants";
+
+.result_container {
+  @extend %flex_row_center_center;
+  font-size: 80px;
+  height: 70vh;
+  color: snow;
+}

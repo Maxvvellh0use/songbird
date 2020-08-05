@@ -54,48 +54,55 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
     }
 
     const nextLevelHandler = () => {
-        audioBird.currentAudio.pause();
-        console.log(categoryBird.categoryIndex)
-        const copyArrayHeaderClasses = currentBird.activeHeaderClass.slice();
-        copyArrayHeaderClasses[categoryBird.categoryIndex] = '';
-        copyArrayHeaderClasses[categoryBird.categoryIndex + increaseCoefficient] = ' bird_list_item__active';
-        console.log(copyArrayHeaderClasses)
-        setCategoryBirdState(categoryBirdState + increaseCoefficient)
-        const newBirdData = birdsData[categoryBirdState][randomBirdIndex];
-        const otherBirdsInCategory = birdsData[categoryBirdState].filter((bird, index) =>
-            index !== randomBirdIndex);
-        const newCurrentAudio = {
-            currentAudio: new Audio(newBirdData.audio),
-            selectAudio: new Audio(),
-        };
-        const newBird = {
-            audio: newBirdData.audio,
-            description: newBirdData.description,
-            id: 0,
-            image: newBirdData.image,
-            name: newBirdData.name,
-            species: newBirdData.species,
-            otherBirdsInCategory: otherBirdsInCategory,
-            activeHeaderClass: copyArrayHeaderClasses,
-        };
-        const category = {
-            categoryIndex: categoryBirdState,
-            score: 0,
-        };
-        const defaultSelect = {
-            activeListClass: defaultSelectList,
-            audio: '',
-            description: '',
-            id: 0,
-            image: '',
-            name: '',
-            species: '',
-        };
-        Object.assign(defaultSelect, newCurrentAudio);
-        nextCategoryBird(category)
-        createNewBird(newBird)
-        selectNewBird(defaultSelect)
-        setAudioBird(newCurrentAudio)
+        if (categoryBird.categoryIndex < 5) {
+            audioBird.currentAudio.pause();
+            const copyArrayHeaderClasses = currentBird.activeHeaderClass.slice();
+            copyArrayHeaderClasses[categoryBird.categoryIndex] = '';
+            copyArrayHeaderClasses[categoryBird.categoryIndex + increaseCoefficient] = ' bird_list_item__active';
+            setCategoryBirdState(categoryBirdState + increaseCoefficient)
+            const newBirdData = birdsData[categoryBirdState][randomBirdIndex];
+            const otherBirdsInCategory = birdsData[categoryBirdState].filter((bird, index) =>
+                index !== randomBirdIndex);
+            const newCurrentAudio = {
+                currentAudio: new Audio(newBirdData.audio),
+                selectAudio: new Audio(),
+            };
+            const newBird = {
+                audio: newBirdData.audio,
+                description: newBirdData.description,
+                id: 0,
+                image: newBirdData.image,
+                name: newBirdData.name,
+                species: newBirdData.species,
+                otherBirdsInCategory: otherBirdsInCategory,
+                activeHeaderClass: copyArrayHeaderClasses,
+            };
+            const category = {
+                categoryIndex: categoryBirdState,
+                score: 0,
+            };
+            const defaultSelect = {
+                activeListClass: defaultSelectList,
+                audio: '',
+                description: '',
+                id: 0,
+                image: '',
+                name: '',
+                species: '',
+            };
+            Object.assign(defaultSelect, newCurrentAudio);
+            console.log(categoryBirdState)
+                nextCategoryBird(category)
+                createNewBird(newBird)
+                selectNewBird(defaultSelect)
+                setAudioBird(newCurrentAudio)
+        } else {
+            const category = {
+                categoryIndex: categoryBird.categoryIndex + increaseCoefficient,
+                score: 0,
+            };
+            nextCategoryBird(category);
+        }
     }
 
         return (
