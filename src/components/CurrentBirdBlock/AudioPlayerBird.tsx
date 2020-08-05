@@ -27,16 +27,20 @@ interface AudioProps {
         container: string,
         timeBarContainer: string,
         timeBarBackground: string,
+        volumeIcon: string,
+        volumeInput: string,
     },
     categoryBird: {
         categoryIndex: number
     }
 }
 
-const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, categoryBird, thumb, currentBird, selectBird}) => {
+const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, categoryBird, thumb, currentBird, selectBird, selectAudioBird}) => {
+    console.log(Boolean(thumb.container))
     const [categoryBirdState, setCategoryBirdState] = useState(categoryBird.categoryIndex)
     const [audioButtonImage, setAudioButton] = useState(playButton);
     const [birdAudioState, setBirdAudioState] = useState(audioBird);
+    console.log(birdAudioState)
     birdAudioState.addEventListener('pause', () => {
         setAudioButton(playButton);
     })
@@ -49,13 +53,14 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, catego
             birdAudioState.pause();
         }
 
-    }, [birdAudioState, audioBird, currentBird, selectBird, categoryBirdState])
+    }, [birdAudioState, audioBird, currentBird, selectBird, categoryBirdState, categoryBird])
     const startTime: number = Math.round(birdAudioState.currentTime);
     const [startTimeState, setStartTime] = useState(startTime);
     const [fullTimeState, setFullTimeState] = useState('00:00');
     const playAudio = async () => {
+        // thumb.container ? await setBirdAudioState(selectAudioBird) : await setBirdAudioState(audioBird);
         if (birdAudioState.paused) {
-            await birdAudioState.play();
+            await birdAudioState.play()
             setTimeout(function timerAudio() {
                 setStartTime(birdAudioState.currentTime);
                 if (!birdAudioState.paused) {
@@ -106,8 +111,13 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, catego
                 </div>
             </div>
             <div className='audio_player__volume'>
-                <img className='volume_icon' src={volumeImageState} alt='sound'/>
-                <input onChange={volumeControl} value={volumeValueState} className='volume' type="range"/>
+                <img className={'volume_icon' + thumb.volumeIcon}
+                     src={volumeImageState}
+                     alt='sound'/>
+                <input className={'volume' + thumb.volumeInput}
+                       onChange={volumeControl}
+                       value={volumeValueState}
+                       type="range"/>
             </div>
         </div>
     )

@@ -10,12 +10,15 @@ const DescriptionBirdBlock: React.FunctionComponent<SystemState> = ({ selectBird
     const defaultDescriptionState = selectBird.name ? ' hidden' : '';
     const descriptionBirdState = selectBird.name ? '' : ' hidden';
     const audioSelect = new Audio(selectBird.audio);
+    const audioBird = new Audio(currentBird.audio);
     const thumbClasses = {
         button: ' button_thumb',
         timeBar: ' timeBar_thumb',
         container: ' container_thumb',
         timeBarContainer: ' timeBar_container',
-        timeBarBackground: ' timeBar_thumb_background'
+        timeBarBackground: ' timeBar_thumb_background',
+        volumeIcon: ' volume_icon_thumb',
+        volumeInput: ' volume_input'
     }
     return (
         <div className='description_bird_block'>
@@ -30,7 +33,7 @@ const DescriptionBirdBlock: React.FunctionComponent<SystemState> = ({ selectBird
                     <div className='audio_block'>
                         <p className='bird_name'>{selectBird.name}</p>
                         <span className='bird_species'>{selectBird.species}</span>
-                        <AudioPlayerBird audioBird={new Audio()} thumb={thumbClasses} selectAudioBird={audioSelect}/>
+                        <AudioPlayerBird audioBird={audioBird} thumb={thumbClasses} selectAudioBird={audioSelect}/>
                     </div>
                 </div>
                 <p className='description__bird_description'>{selectBird.description}</p>

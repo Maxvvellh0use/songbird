@@ -49,7 +49,10 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         container: '',
         timeBarContainer: '',
         timeBarBackground: '',
+        volumeIcon: '',
+        volumeInput: '',
     }
+    const selectAudioBird = new Audio(selectBird.audio);
     const audioBird = new Audio(currentBird.audio);
     return (
         <div className='wrapper'>
@@ -62,7 +65,7 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
                 <div className='name_and_audio'>
                     <p className='current_bird_name'>{isCorrectBird() ?
                         currentBird.name : alternativeBird.name}</p>
-                    <AudioPlayerBird selectAudioBird={new Audio()} thumb={thumbClasses} audioBird={audioBird} />
+                    <AudioPlayerBird selectAudioBird={selectAudioBird} thumb={thumbClasses} audioBird={audioBird} />
                 </div>
             </div>
         </div>
