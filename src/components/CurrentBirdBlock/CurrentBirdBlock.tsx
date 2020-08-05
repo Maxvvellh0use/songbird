@@ -57,7 +57,7 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
                 <div className='image_bird_container'>
                     <img className='image_bird'
                          src={isCorrectBird() ? currentBird.image : alternativeBird.image}
-                         alt='bird'/>
+                         alt={currentBird.name}/>
                 </div>
                 <div className='name_and_audio'>
                     <p className='current_bird_name'>{isCorrectBird() ?

@@ -27,28 +27,29 @@ interface AudioProps {
         container: string,
         timeBarContainer: string,
         timeBarBackground: string,
+    },
+    categoryBird: {
+        categoryIndex: number
     }
 }
 
-const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, selectAudioBird, thumb, currentBird, selectBird}) => {
+const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, categoryBird, thumb, currentBird, selectBird}) => {
+    const [categoryBirdState, setCategoryBirdState] = useState(categoryBird.categoryIndex)
     const [audioButtonImage, setAudioButton] = useState(playButton);
     const [birdAudioState, setBirdAudioState] = useState(audioBird);
     birdAudioState.addEventListener('pause', () => {
         setAudioButton(playButton);
     })
     useEffect(() => {
-        console.log(currentBird.name === selectBird.name)
-        setBirdAudioState(audioBird)
-        // if (currentBird.name === selectBird.name) {
-        //     console.log(birdAudioState)
-        //     birdAudioState.pause();
-        // }
+        if (categoryBirdState !== categoryBird.categoryIndex) {
+            setCategoryBirdState(categoryBird.categoryIndex)
+            setBirdAudioState(audioBird);
+        }
         if (currentBird.name === selectBird.name) {
             birdAudioState.pause();
         }
-        setBirdAudioState(audioBird)
 
-    }, [birdAudioState, audioBird, currentBird, selectBird])
+    }, [birdAudioState, audioBird, currentBird, selectBird, categoryBirdState])
     const startTime: number = Math.round(birdAudioState.currentTime);
     const [startTimeState, setStartTime] = useState(startTime);
     const [fullTimeState, setFullTimeState] = useState('00:00');
