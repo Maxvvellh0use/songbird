@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './header.scss';
-import { BirdListItem } from "./BirdListItem";
+import BirdListItem from "./BirdListItem";
 
 export const Header: React.FunctionComponent = () => {
-    const birdListItem = BirdListItem();
     return (
         <header className="header">
             <div className="wrapper wrapper_header">
@@ -16,9 +15,7 @@ export const Header: React.FunctionComponent = () => {
                     </div>
                 </div>
                 <div className="navigation_birds">
-                    <ul className="navigation_birds__list">
-                        { birdListItem }
-                    </ul>
+                    <BirdListItem />
                 </div>
             </div>
         </header>

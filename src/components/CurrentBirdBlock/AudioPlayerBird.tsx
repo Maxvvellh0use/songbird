@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {SystemState} from "../../redux/types";
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
 import pauseButton from '../../assets/svg/pause-button.svg';
@@ -85,6 +84,7 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, 
     }
     const [volumeValueState, setVolumeValueState] = useState(startVolume);
     audioBirdCurrent.volume = volumeValueState / volumeCoefficient;
+    audioBirdSelect.volume = volumeValueState / volumeCoefficient;
     const [volumeImageState, setVolumeImageState] = useState(volumeMedium);
     const volumeControl = (event: React.ChangeEvent<HTMLInputElement>) => {
         const currentValue: number = +(event.target.value);

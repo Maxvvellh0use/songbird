@@ -10,6 +10,7 @@ const initialState: SystemState = {
         name: '',
         species: '',
         otherBirdsInCategory: [],
+        activeHeaderClass: [],
     },
     selectBird: {
         audio: '',

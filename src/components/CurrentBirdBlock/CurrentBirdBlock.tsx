@@ -1,12 +1,9 @@
 import AudioPlayerBird from "./AudioPlayerBird";
 import './current-bird.scss';
 import altBirdImage from '../../assets/img/alt_bird_image.png';
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { getRandomBirdIndex } from "./helpers/getRandomBirdIndex";
 import { createNewBird } from "../../redux/actions";
-import birdsData from "../../data/birdsData";
-import { startCategoryIndex } from "./consts";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 
 interface PropsWithCreateNewBird {

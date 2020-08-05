@@ -1,11 +1,9 @@
 import React from "react";
 import './description_bird.scss'
 import { connect } from "react-redux";
-import { SystemState } from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import AudioPlayerBird from "../CurrentBirdBlock/AudioPlayerBird";
-import {selectNewBird, setAudioBird} from "../../redux/actions";
 
 interface DescriptionProps {
     selectBird: {

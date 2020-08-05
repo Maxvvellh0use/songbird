@@ -14,6 +14,7 @@ export interface SystemState {
         name: string,
         species: string,
         otherBirdsInCategory: object[],
+        activeHeaderClass: string[],
     },
     selectBird: {
         audio: string,

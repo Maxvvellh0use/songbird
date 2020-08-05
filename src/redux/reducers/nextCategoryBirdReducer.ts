@@ -17,6 +17,7 @@ export const initialState: SystemState = {
         name: firstBirdData.name,
         species: firstBirdData.species,
         otherBirdsInCategory: otherBirdsInCategory,
+        activeHeaderClass: [' bird_list_item__active', '', '', '', '', ''],
     },
     selectBird: {
         activeListClass: ['', '', '', '', '', ''],

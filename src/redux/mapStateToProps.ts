@@ -9,6 +9,7 @@ export const mapStateToProps = (state: SystemState) => ({
         name: state.currentBird.name,
         species: state.currentBird.species,
         otherBirdsInCategory: state.currentBird.otherBirdsInCategory,
+        activeHeaderClass: state.currentBird.activeHeaderClass,
     },
     selectBird: {
         audio: state.selectBird.audio,

@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import AnswerOptionsBlock from "../AnswerOptionsBlock/AnswerOptionsBlock";
 import DescriptionBirdBlock from "../DescriptionBirdBlock/DescriptionBirdBlock";
 import { Button } from "../Buttons/Button";
-import { SystemState } from "../../redux/types";
 import { connect } from "react-redux";
 import {mapStateToProps} from "../../redux/mapStateToProps";
 import {createNewBird, nextCategoryBird, selectNewBird, setAudioBird} from "../../redux/actions";
@@ -20,6 +19,7 @@ interface PropsCategoryBird {
         name: string,
         species: string,
         otherBirdsInCategory: object[],
+        activeHeaderClass: string[],
     },
     selectBird: {
         audio: string,
@@ -42,7 +42,8 @@ interface PropsCategoryBird {
     setAudioBird: any
 }
 
-const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({audioBird, setAudioBird, selectNewBird, categoryBird, nextCategoryBird, currentBird, selectBird, createNewBird}) => {
+const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
+    ({audioBird, setAudioBird, selectNewBird, nextCategoryBird, currentBird, selectBird, createNewBird, categoryBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
     const [categoryBirdState, setCategoryBirdState] = useState(startIndex);
     const isCorrectBird = () => {
@@ -51,8 +52,14 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({audioBird,
                 buttonActiveClass: currentBird.name !== selectBird.name ? '' : ' button_active',
             }
     }
+
     const nextLevelHandler = () => {
         audioBird.currentAudio.pause();
+        console.log(categoryBird.categoryIndex)
+        const copyArrayHeaderClasses = currentBird.activeHeaderClass.slice();
+        copyArrayHeaderClasses[categoryBird.categoryIndex] = '';
+        copyArrayHeaderClasses[categoryBird.categoryIndex + increaseCoefficient] = ' bird_list_item__active';
+        console.log(copyArrayHeaderClasses)
         setCategoryBirdState(categoryBirdState + increaseCoefficient)
         const newBirdData = birdsData[categoryBirdState][randomBirdIndex];
         const otherBirdsInCategory = birdsData[categoryBirdState].filter((bird, index) =>
@@ -69,6 +76,7 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({audioBird,
             name: newBirdData.name,
             species: newBirdData.species,
             otherBirdsInCategory: otherBirdsInCategory,
+            activeHeaderClass: copyArrayHeaderClasses,
         };
         const category = {
             categoryIndex: categoryBirdState,
