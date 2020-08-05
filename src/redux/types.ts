@@ -27,6 +27,10 @@ export interface SystemState {
     categoryBird: {
         categoryIndex: number
         score: number
+    },
+    audioBird: {
+        selectAudio: HTMLAudioElement,
+        currentAudio: HTMLAudioElement,
     }
 }
 
@@ -63,4 +67,19 @@ export interface NextCategoryBird {
         score: number
     }
 }
+
+export const SET_AUDIO_BIRD: string = 'SET_AUDIO_BIRD'
+
+export interface SetAudioBirdAction {
+    type: typeof NEXT_CATEGORY_BIRD
+    payload: SetAudioBird
+}
+
+export interface SetAudioBird {
+    audioBird: {
+        selectAudio: string,
+        currentAudio: string,
+    }
+}
+
 

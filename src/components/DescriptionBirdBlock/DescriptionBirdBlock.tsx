@@ -5,12 +5,24 @@ import { SystemState } from "../../redux/types";
 import { defaultTextDescriptionBlock } from "./const";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import AudioPlayerBird from "../CurrentBirdBlock/AudioPlayerBird";
+import {selectNewBird, setAudioBird} from "../../redux/actions";
 
-const DescriptionBirdBlock: React.FunctionComponent<SystemState> = ({ selectBird, currentBird}) => {
+interface DescriptionProps {
+    selectBird: {
+        name: string,
+        image: string,
+        description: string,
+        species: string,
+    },
+    audioBird: {
+        selectAudio: HTMLAudioElement,
+        currentAudio: HTMLAudioElement,
+    }
+}
+
+const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBird}) => {
     const defaultDescriptionState = selectBird.name ? ' hidden' : '';
     const descriptionBirdState = selectBird.name ? '' : ' hidden';
-    const audioSelect = new Audio(selectBird.audio);
-    const audioBird = new Audio(currentBird.audio);
     const thumbClasses = {
         button: ' button_thumb',
         timeBar: ' timeBar_thumb',
@@ -33,7 +45,7 @@ const DescriptionBirdBlock: React.FunctionComponent<SystemState> = ({ selectBird
                     <div className='audio_block'>
                         <p className='bird_name'>{selectBird.name}</p>
                         <span className='bird_species'>{selectBird.species}</span>
-                        <AudioPlayerBird audioBird={audioBird} thumb={thumbClasses} selectAudioBird={audioSelect}/>
+                        <AudioPlayerBird targetId={'descriptionBlock'} thumb={thumbClasses}/>
                     </div>
                 </div>
                 <p className='description__bird_description'>{selectBird.description}</p>

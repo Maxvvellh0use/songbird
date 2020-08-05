@@ -30,6 +30,10 @@ export const initialState: SystemState = {
     categoryBird: {
         categoryIndex: 0,
         score: 0
+    },
+    audioBird: {
+        selectAudio: new Audio(),
+        currentAudio: new Audio(firstBirdData.audio),
     }
 }
 

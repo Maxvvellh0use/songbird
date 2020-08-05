@@ -13,8 +13,7 @@ import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 
 interface AudioProps {
-    audioBird: HTMLAudioElement,
-    selectAudioBird: HTMLAudioElement,
+    targetId: string,
     currentBird: {
         name: string,
     },
@@ -32,51 +31,54 @@ interface AudioProps {
     },
     categoryBird: {
         categoryIndex: number
+    },
+    audioBird: {
+        selectAudio: HTMLAudioElement,
+        currentAudio: HTMLAudioElement,
     }
 }
 
-const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, categoryBird, thumb, currentBird, selectBird, selectAudioBird}) => {
-    console.log(Boolean(thumb.container))
-    const [categoryBirdState, setCategoryBirdState] = useState(categoryBird.categoryIndex)
+const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, audioBird, selectBird}, props) => {
+    const audioBirdCurrent = audioBird.currentAudio;
+    const audioBirdSelect = audioBird.selectAudio;
+    // const [categoryBirdState, setCategoryBirdState] = useState(categoryBird.categoryIndex)
     const [audioButtonImage, setAudioButton] = useState(playButton);
-    const [birdAudioState, setBirdAudioState] = useState(audioBird);
-    console.log(birdAudioState)
-    birdAudioState.addEventListener('pause', () => {
+    // const [birdAudioState, setBirdAudioState] = useState(audioBird.currentAudio);
+    audioBirdCurrent.addEventListener('pause', () => {
         setAudioButton(playButton);
-    })
-    useEffect(() => {
-        if (categoryBirdState !== categoryBird.categoryIndex) {
-            setCategoryBirdState(categoryBird.categoryIndex)
-            setBirdAudioState(audioBird);
-        }
-        if (currentBird.name === selectBird.name) {
-            birdAudioState.pause();
-        }
-
-    }, [birdAudioState, audioBird, currentBird, selectBird, categoryBirdState, categoryBird])
-    const startTime: number = Math.round(birdAudioState.currentTime);
+    });
+    audioBirdSelect.addEventListener('pause', () => {
+        setAudioButton(playButton);
+    });
+    const playEvents = async (audio: HTMLAudioElement) => {
+        await audio.play();
+        setTimeout(function timerAudio() {
+            setStartTime(audio.currentTime);
+            if (!audio.paused) {
+                setTimeout(timerAudio, defaultTimeout);
+            }
+        }, defaultTimeout);
+        setAudioButton(pauseButton);
+        const correctFullTime: string = getCorrectClock(audio.duration)
+        setFullTimeState(correctFullTime);
+    }
+    const startTime: number = Math.round(audioBirdCurrent.currentTime);
     const [startTimeState, setStartTime] = useState(startTime);
     const [fullTimeState, setFullTimeState] = useState('00:00');
-    const playAudio = async () => {
-        // thumb.container ? await setBirdAudioState(selectAudioBird) : await setBirdAudioState(audioBird);
-        if (birdAudioState.paused) {
-            await birdAudioState.play()
-            setTimeout(function timerAudio() {
-                setStartTime(birdAudioState.currentTime);
-                if (!birdAudioState.paused) {
-                    setTimeout(timerAudio, defaultTimeout);
-                }
-            }, defaultTimeout);
-            setAudioButton(pauseButton);
-            const correctFullTime: string = getCorrectClock(birdAudioState.duration)
-            setFullTimeState(correctFullTime);
+    const playAudio = async (event: any) => {
+        const targetId = event.target.dataset.target
+        if (audioBirdCurrent.paused && targetId === 'currentBlock') {
+            await playEvents(audioBirdCurrent);
+        } else if (audioBirdSelect.paused && targetId === 'descriptionBlock') {
+            await playEvents(audioBirdSelect);
         } else {
-            birdAudioState.pause();
+            audioBirdSelect.pause();
+            audioBirdCurrent.pause();
             setAudioButton(playButton);
         }
     }
     const [volumeValueState, setVolumeValueState] = useState(startVolume);
-    birdAudioState.volume = volumeValueState / volumeCoefficient;
+    audioBirdCurrent.volume = volumeValueState / volumeCoefficient;
     const [volumeImageState, setVolumeImageState] = useState(volumeMedium);
     const volumeControl = (event: React.ChangeEvent<HTMLInputElement>) => {
         const currentValue: number = +(event.target.value);
@@ -91,18 +93,19 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({audioBird, catego
         }
         setVolumeValueState(currentValue);
     }
-    birdAudioState.addEventListener('ended', () => {
+    audioBirdCurrent.addEventListener('ended', () => {
         setAudioButton(playButton);
     })
     return (
         <div className={'audio_player_container' + thumb.container}>
             <img onClick={playAudio}
+                 data-target={targetId}
                  className={'play_pause_button' + thumb.button}
                  src={audioButtonImage}
                  alt='play button'/>
             <div className={'audio_player__timebar' + thumb.timeBarContainer}>
                 <div className={'timebar' + thumb.timeBar}>
-                    <div style={{background: '#6286BD', width: getPercent(startTimeState/birdAudioState.duration)}}
+                    <div style={{background: '#6286BD', width: getPercent(startTimeState/audioBirdCurrent.duration)}}
                          className={'timebar_background' + thumb.timeBarBackground}/>
                 </div>
                 <div className='time'>

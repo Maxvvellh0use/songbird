@@ -23,4 +23,8 @@ export const mapStateToProps = (state: SystemState) => ({
         categoryIndex: state.categoryBird.categoryIndex,
         score: state.categoryBird.score,
     },
+    audioBird: {
+        selectAudio: state.audioBird.selectAudio,
+        currentAudio: state.audioBird.currentAudio,
+    }
 })

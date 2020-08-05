@@ -23,6 +23,10 @@ const initialState: SystemState = {
     categoryBird: {
         categoryIndex: 0,
         score: 0
+    },
+    audioBird: {
+        currentAudio: new Audio(),
+        selectAudio: new Audio(),
     }
 }
 

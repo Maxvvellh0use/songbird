@@ -1,5 +1,5 @@
 import { SELECT_BIRD, SelectBird } from "../types";
-import {defaultSelectList} from "../consts";
+import { defaultSelectList } from "../consts";
 
 const initialState: SelectBird = {
     selectBird: {
