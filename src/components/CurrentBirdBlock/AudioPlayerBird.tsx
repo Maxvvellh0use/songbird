@@ -38,12 +38,18 @@ interface AudioProps {
     }
 }
 
-const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, audioBird, selectBird}, props) => {
+const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, audioBird, selectBird, currentBird}) => {
     const audioBirdCurrent = audioBird.currentAudio;
     const audioBirdSelect = audioBird.selectAudio;
-    // const [categoryBirdState, setCategoryBirdState] = useState(categoryBird.categoryIndex)
     const [audioButtonImage, setAudioButton] = useState(playButton);
-    // const [birdAudioState, setBirdAudioState] = useState(audioBird.currentAudio);
+    const isCorrectBird = () => {
+        return currentBird.name === selectBird.name
+    }
+    useEffect(() => {
+        if (isCorrectBird()) {
+            audioBirdCurrent.pause()
+        }
+    }, [isCorrectBird, audioBirdCurrent])
     audioBirdCurrent.addEventListener('pause', () => {
         setAudioButton(playButton);
     });

@@ -1,4 +1,4 @@
-import {NextCategoryBird, SystemState} from "./types";
+import { SystemState } from "./types";
 
 export const mapStateToProps = (state: SystemState) => ({
     currentBird: {

@@ -5,7 +5,7 @@ import { Button } from "../Buttons/Button";
 import { SystemState } from "../../redux/types";
 import { connect } from "react-redux";
 import {mapStateToProps} from "../../redux/mapStateToProps";
-import {createNewBird, nextCategoryBird, selectNewBird} from "../../redux/actions";
+import {createNewBird, nextCategoryBird, selectNewBird, setAudioBird} from "../../redux/actions";
 import birdsData from "../../data/birdsData";
 import {getRandomBirdIndex} from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
 import {defaultSelectList} from "../../redux/consts";
@@ -32,13 +32,17 @@ interface PropsCategoryBird {
     categoryBird: {
         categoryIndex: number
         score: number
+    },
+    audioBird: {
+        currentAudio: HTMLAudioElement,
     }
     nextCategoryBird: any,
     createNewBird: any,
-    selectNewBird: any
+    selectNewBird: any,
+    setAudioBird: any
 }
 
-const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewBird, categoryBird, nextCategoryBird, currentBird, selectBird, createNewBird}) => {
+const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({audioBird, setAudioBird, selectNewBird, categoryBird, nextCategoryBird, currentBird, selectBird, createNewBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
     const [categoryBirdState, setCategoryBirdState] = useState(startIndex);
     const isCorrectBird = () => {
@@ -48,23 +52,28 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
             }
     }
     const nextLevelHandler = () => {
+        audioBird.currentAudio.pause();
         setCategoryBirdState(categoryBirdState + increaseCoefficient)
-        const firstBirdData = birdsData[categoryBirdState][randomBirdIndex];
+        const newBirdData = birdsData[categoryBirdState][randomBirdIndex];
         const otherBirdsInCategory = birdsData[categoryBirdState].filter((bird, index) =>
             index !== randomBirdIndex);
-        const firstBird = {
-            audio: firstBirdData.audio,
-            description: firstBirdData.description,
+        const newCurrentAudio = {
+            currentAudio: new Audio(newBirdData.audio),
+            selectAudio: new Audio(),
+        };
+        const newBird = {
+            audio: newBirdData.audio,
+            description: newBirdData.description,
             id: 0,
-            image: firstBirdData.image,
-            name: firstBirdData.name,
-            species: firstBirdData.species,
+            image: newBirdData.image,
+            name: newBirdData.name,
+            species: newBirdData.species,
             otherBirdsInCategory: otherBirdsInCategory,
         };
         const category = {
             categoryIndex: categoryBirdState,
             score: 0,
-        }
+        };
         const defaultSelect = {
             activeListClass: defaultSelectList,
             audio: '',
@@ -73,10 +82,12 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
             image: '',
             name: '',
             species: '',
-        }
+        };
+        Object.assign(defaultSelect, newCurrentAudio);
         nextCategoryBird(category)
-        createNewBird(firstBird)
+        createNewBird(newBird)
         selectNewBird(defaultSelect)
+        setAudioBird(newCurrentAudio)
     }
 
         return (
@@ -98,7 +109,7 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> = ({selectNewB
 
 const mapDispatchToProps = {
     createNewBird, nextCategoryBird,
-    selectNewBird
+    selectNewBird, setAudioBird
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FunctionalBlock)

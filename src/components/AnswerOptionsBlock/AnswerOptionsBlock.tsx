@@ -64,7 +64,6 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({setAud
             correctSound.play().then();
             Object.assign(newSelect, currentBird, newAudioBird)
             selectNewBird(newSelect);
-            setAudioBird(newAudioBird)
         } else {
             audioBird.selectAudio.pause();
             activeListClass.map(() => activeListClass[targetData.targetIndex] = ' error');
@@ -79,7 +78,6 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({setAud
             console.log(newAudioBird.selectAudio.src)
             Object.assign(newSelect, selectBirdObj, newAudioBird)
             selectNewBird(newSelect);
-            setAudioBird(newAudioBird)
         }
     }
     const firstSixListItems: JSX.Element[] = firstSixNames.map((name: string, index) =>
