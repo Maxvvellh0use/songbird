@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './description_bird.scss'
 import { connect } from "react-redux";
 import { defaultTextDescriptionBlock } from "./const";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import AudioPlayerBird from "../CurrentBirdBlock/AudioPlayerBird";
+import { useLoadImage } from "../Hooks/useLoadImage/useLoadImage";
+import altBirdImagePath from '../../assets/img/alt_bird_image.png';
+import axios from 'axios';
 
 interface DescriptionProps {
     selectBird: {
@@ -19,6 +22,7 @@ interface DescriptionProps {
 }
 
 const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBird}) => {
+    console.log(selectBird.image);
     const defaultDescriptionState = selectBird.name ? ' hidden' : '';
     const descriptionBirdState = selectBird.name ? '' : ' hidden';
     const thumbClasses = {
@@ -54,3 +58,6 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
 
 
 export default connect(mapStateToProps)(DescriptionBirdBlock)
+
+
+

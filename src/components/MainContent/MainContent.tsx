@@ -6,9 +6,9 @@ import { SystemState } from "../../redux/types";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import ResultWindow from "../ResultWindow/ResultWindow";
 
-const MainContent: React.FunctionComponent<SystemState> = ({categoryBird}) => {
-    console.log(categoryBird.categoryIndex)
-    if (categoryBird.categoryIndex > 5) {
+const MainContent: React.FunctionComponent<SystemState> = ({categoryBird, selectBird, currentBird}) => {
+    const isEndGame = () => categoryBird.categoryIndex === 5 && selectBird.name === currentBird.name;
+    if (isEndGame()) {
         return (
             <ResultWindow />
         )
