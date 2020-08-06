@@ -30,6 +30,7 @@ interface PropsCurrentSelect {
     },
     categoryBird: {
         categoryIndex: number
+        scoreCategory: number,
         score: number
     },
     audioBird: {
@@ -68,7 +69,8 @@ const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({nextCa
         } else {
             if (!targetData.active) {
                 const newScore = {
-                    score: categoryBird.score - 1,
+                    scoreCategory: categoryBird.scoreCategory - 1,
+                    score: categoryBird.score,
                     categoryIndex: categoryBird.categoryIndex
                 }
                 nextCategoryBird(newScore);

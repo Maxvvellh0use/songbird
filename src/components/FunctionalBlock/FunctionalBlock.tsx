@@ -30,8 +30,9 @@ interface PropsCategoryBird {
         species: string,
     },
     categoryBird: {
-        categoryIndex: number
-        score: number
+        categoryIndex: number,
+        scoreCategory: number,
+        score: number,
     },
     audioBird: {
         currentAudio: HTMLAudioElement,
@@ -79,7 +80,8 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
             };
             const category = {
                 categoryIndex: categoryBirdState,
-                score: 0,
+                scoreCategory: 6,
+                score: categoryBird.score + categoryBird.scoreCategory,
             };
             const defaultSelect = {
                 activeListClass: defaultSelectList,

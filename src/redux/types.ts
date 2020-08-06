@@ -26,8 +26,9 @@ export interface SystemState {
         activeListClass: string[],
     },
     categoryBird: {
-        categoryIndex: number
-        score: number
+        categoryIndex: number,
+        scoreCategory: number,
+        score: number,
     },
     audioBird: {
         selectAudio: HTMLAudioElement,
