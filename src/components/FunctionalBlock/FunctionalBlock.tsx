@@ -93,7 +93,6 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
                 species: '',
             };
             Object.assign(defaultSelect, newCurrentAudio);
-            console.log(categoryBirdState)
                 nextCategoryBird(category)
                 createNewBird(newBird)
                 selectNewBird(defaultSelect)

@@ -22,7 +22,6 @@ interface DescriptionProps {
 }
 
 const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBird}) => {
-    console.log(selectBird.image);
     const defaultDescriptionState = selectBird.name ? ' hidden' : '';
     const descriptionBirdState = selectBird.name ? '' : ' hidden';
     const thumbClasses = {

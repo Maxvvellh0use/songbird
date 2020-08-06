@@ -37,9 +37,7 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         name: '******',
         image: altBirdImage
     }
-    const isCorrectBird = () => {
-        return currentBird.name === selectBird.name
-    }
+    const isCorrectBird = () => currentBird.name === selectBird.name;
     const thumbClasses = {
         button: '',
         timeBar: '',
@@ -49,6 +47,7 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         volumeIcon: '',
         volumeInput: '',
     }
+    console.log(currentBird.name)
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>

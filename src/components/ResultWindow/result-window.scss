@@ -3,7 +3,24 @@
 
 .result_container {
   @extend %flex_row_center_center;
+  flex-direction: column;
   font-size: 80px;
-  height: 70vh;
+  height: 40vh;
   color: snow;
+  text-align: center;
+}
+
+.button_reset_game {
+  width: 150px;
+  font-size: 30px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background: $color-birds-list;
+  color: snow;
+  padding: 5px;
+}
+
+.fun_bird_img {
+  margin-top: 140px;
+  width: 650px;
 }
