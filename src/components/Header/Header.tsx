@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './header.scss';
 import BirdListItem from "./BirdListItem";
 import { SystemState } from "../../redux/types";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import { connect } from "react-redux";
 
-const Header: React.FunctionComponent<SystemState> = ({categoryBird}) => {
+const Header: React.FunctionComponent<SystemState> = ({categoryBird, selectBird, currentBird}) => {
+    const isEndGame = () => categoryBird.categoryIndex === 5
+        && selectBird.name === currentBird.name;
+    const totalScore = isEndGame() ? categoryBird.score  + categoryBird.scoreCategory
+        : categoryBird.score;
     return (
         <header className="header">
             <div className="wrapper wrapper_header">
@@ -14,7 +18,7 @@ const Header: React.FunctionComponent<SystemState> = ({categoryBird}) => {
                         <h1>SongBird</h1>
                     </div>
                     <div className="score">
-                        <span className="score__score_counter">SCORE {categoryBird.score}</span>
+                        <span className="score__score_counter">SCORE {totalScore}</span>
                     </div>
                 </div>
                 <div className="navigation_birds">

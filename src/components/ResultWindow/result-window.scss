@@ -24,3 +24,13 @@
   margin-top: 140px;
   width: 650px;
 }
+
+.fun_result_container {
+  @extend %flex_row_center_center;
+  flex-direction: column;
+}
+
+.not_fun_result_container {
+  @extend %flex_row_center_center;
+  flex-direction: column;
+}
