@@ -1,5 +1,4 @@
-
-export const getDeclension = (totalScore: number) => {
+export const getDeclension = (totalScore: number): string => {
     const lastNumber  = +(totalScore.toString().slice(1, 2));
     if (totalScore < 20 || totalScore > 24) {
         return 'баллов';
@@ -8,4 +7,5 @@ export const getDeclension = (totalScore: number) => {
     } else if (totalScore > 20 && (lastNumber === 2 || lastNumber === 3 || lastNumber === 4)) {
         return 'балла'
     }
+    return 'баллов'
 }

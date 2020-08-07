@@ -1,4 +1,6 @@
 import React, { useReducer, useEffect } from "react";
+import axios from "axios";
+import altBirdImagePath from "../../../assets/img/alt_bird_image.png";
 
 function reducer(currentSrc: string, action: any) {
     if (action.type === 'main image loaded') {
@@ -13,18 +15,11 @@ function reducer(currentSrc: string, action: any) {
 export const useLoadImage = (src: string, fallbackSrc: string) => {
     const [currentSrc, dispatch] = useReducer(reducer, null);
     useEffect(() => {
-        const mainImage = new Image();
-        const fallbackImage = new Image();
-
-        mainImage.onload = () => {
-            dispatch({ type: 'main image loaded', src });
-        };
-        fallbackImage.onload = () => {
+        axios.get(src).then(res => {
+            dispatch( { type: 'main image loaded', src });
+        }).catch(err => {
             dispatch({ type: 'fallback image loaded', src: fallbackSrc });
-        };
-
-        mainImage.src = src;
-        fallbackImage.src = fallbackSrc;
+        });
     }, [src, fallbackSrc]);
 
     return currentSrc;

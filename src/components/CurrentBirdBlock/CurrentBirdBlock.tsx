@@ -1,10 +1,12 @@
 import AudioPlayerBird from "./AudioPlayerBird";
 import './current-bird.scss';
 import altBirdImage from '../../assets/img/alt_bird_image.png';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
 import { createNewBird } from "../../redux/actions";
 import { mapStateToProps } from "../../redux/mapStateToProps";
+import axios from "axios";
+import altBirdImagePath from "../../assets/img/alt_bird_image.png";
 
 interface PropsWithCreateNewBird {
     currentBird: {
@@ -48,12 +50,20 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         volumeInput: '',
     }
     console.log(currentBird.name)
+    const [selectBirdImageState, setSelectBirdImageState] = useState(altBirdImagePath);
+    useEffect(() => {
+        axios.get(selectBird.image).then(res => {
+            return setSelectBirdImageState(selectBird.image);
+        }).catch(err => {
+            return setSelectBirdImageState(altBirdImagePath);
+        });
+    }, [selectBirdImageState, selectBird])
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>
                 <div className='image_bird_container'>
                     <img className='image_bird'
-                         src={isCorrectBird() ? currentBird.image : alternativeBird.image}
+                         src={isCorrectBird() ? selectBirdImageState : alternativeBird.image}
                          alt={currentBird.name}/>
                 </div>
                 <div className='name_and_audio'>

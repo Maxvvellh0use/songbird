@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AnswerOptionsBlock from "../AnswerOptionsBlock/AnswerOptionsBlock";
 import DescriptionBirdBlock from "../DescriptionBirdBlock/DescriptionBirdBlock";
 import { Button } from "../Buttons/Button";
@@ -9,6 +9,9 @@ import birdsData from "../../data/birdsData";
 import {getRandomBirdIndex} from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
 import {defaultSelectList} from "../../redux/consts";
 import {increaseCoefficient, startIndex} from "./consts";
+import {useLoadImage} from "../Hooks/useLoadImage/useLoadImage";
+import altBirdImagePath from "../../assets/img/alt_bird_image.png";
+import axios from 'axios';
 
 interface PropsCategoryBird {
     currentBird: {
@@ -53,7 +56,14 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
                 buttonActiveClass: currentBird.name !== selectBird.name ? '' : ' button_active',
             }
     }
-
+    const [selectBirdImageState, setSelectBirdImageState] = useState(altBirdImagePath);
+    useEffect(() => {
+            axios.get(selectBird.image).then(res => {
+                return setSelectBirdImageState(selectBird.image);
+            }).catch(err => {
+                return setSelectBirdImageState(altBirdImagePath);
+            });
+    }, [selectBirdImageState, selectBird])
     const nextLevelHandler = () => {
         if (categoryBird.categoryIndex < 5) {
             audioBird.currentAudio.pause();
@@ -110,7 +120,7 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
             <section className='functional_section'>
                 <div className='wrapper wrapper_functional_block'>
                     <AnswerOptionsBlock />
-                    <DescriptionBirdBlock />
+                    <DescriptionBirdBlock selectBirdImage={selectBirdImageState} />
                 </div>
                 <div className='wrapper'>
                     <Button onClick={nextLevelHandler}

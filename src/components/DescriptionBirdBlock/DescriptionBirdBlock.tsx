@@ -9,6 +9,7 @@ import altBirdImagePath from '../../assets/img/alt_bird_image.png';
 import axios from 'axios';
 
 interface DescriptionProps {
+    selectBirdImage: string,
     selectBird: {
         name: string,
         image: string,
@@ -21,7 +22,7 @@ interface DescriptionProps {
     }
 }
 
-const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBird}) => {
+const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBirdImage, selectBird}) => {
     const defaultDescriptionState = selectBird.name ? ' hidden' : '';
     const descriptionBirdState = selectBird.name ? '' : ' hidden';
     const thumbClasses = {
@@ -41,7 +42,7 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
             <div className={'description_bird_block__description' + descriptionBirdState}>
                 <div className='image_and_audio'>
                     <div className='image_container'>
-                        <img className='bird_image' src={selectBird.image} alt={selectBird.name}/>
+                        <img className='bird_image' src={selectBirdImage} alt={selectBird.name}/>
                     </div>
                     <div className='audio_block'>
                         <p className='bird_name'>{selectBird.name}</p>
