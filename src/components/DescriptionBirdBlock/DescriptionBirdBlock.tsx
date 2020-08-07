@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { defaultTextDescriptionBlock } from "./const";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import AudioPlayerBird from "../CurrentBirdBlock/AudioPlayerBird";
-import svgLoader from '../../assets/img loaders/tail-spin.svg'
+import svgLoader from '../../assets/imgIoaders/tail-spin.svg'
 import altBirdImagePath from "../../assets/img/alt_bird_image.png";
 import axios from "axios";
 
@@ -37,10 +37,10 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
     const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
     useEffect(() => {
         setLoadImageState(false);
-        axios.get(selectBird.image).then(res => {
+        axios.get(selectBird.image).then(() => {
             setSelectBirdImageState(selectBird.image);
             setLoadImageState(true);
-        }).catch(err => {
+        }).catch(() => {
             setSelectBirdImageState(altBirdImagePath);
             setLoadImageState(true);
         });

@@ -25,6 +25,13 @@
   width: 650px;
 }
 
+.fun_loader_container {
+  @extend %flex_row_center_center;
+  margin-top: 200px;
+  height: 40vh;
+  width: 650px;
+}
+
 .fun_result_container {
   @extend %flex_row_center_center;
   flex-direction: column;

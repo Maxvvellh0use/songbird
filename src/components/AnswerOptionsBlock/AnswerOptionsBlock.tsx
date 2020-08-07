@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 import './answer-options-block.scss'
 import { getAllBirdsNames } from "../../data/allBirdsNames";
 import { connect } from "react-redux";
@@ -35,14 +35,15 @@ interface PropsCurrentSelect {
     }
     selectNewBird: any,
     setAudioBird: any,
-    nextCategoryBird: any
+    nextCategoryBird: any,
 }
 
-const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> = ({nextCategoryBird, audioBird, selectNewBird, currentBird, selectBird, categoryBird}) => {
+const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> =
+    ({nextCategoryBird, audioBird, selectNewBird, currentBird, selectBird, categoryBird}) => {
     const errorSound: HTMLAudioElement = new Audio(require('../../assets/audio/error-sound.mp3'));
     const correctSound: HTMLAudioElement = new Audio(require('../../assets/audio/correct-sound.mp3'));
-    const allBirdsNames: [][] = getAllBirdsNames();
-    const firstSixNames: string[] = allBirdsNames[categoryBird.categoryIndex];
+    const allBirdsNamesCache: [][] = useMemo(() => getAllBirdsNames(), []);
+    const firstSixNames: string[] = allBirdsNamesCache[categoryBird.categoryIndex];
     const isCorrectBird = () => currentBird.name !== selectBird.name;
     const checkBird = (event: any) => {
         const defaultClassValue = ['', '', '', '', '', ''];

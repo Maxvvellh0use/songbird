@@ -39,7 +39,7 @@ export const initialState: SystemState = {
     }
 }
 
-export const nextCategoryBirdReducer = (state = initialState, action: any) => {
+export const nextCategoryBirdReducer = (state = initialState, action: { type: string, payload: any }) => {
     switch (action.type) {
         case NEXT_CATEGORY_BIRD:
             return action.payload

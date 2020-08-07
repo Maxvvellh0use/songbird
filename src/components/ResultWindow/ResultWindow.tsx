@@ -1,22 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import { connect } from "react-redux";
 import { SystemState } from "../../redux/types";
 import './result-window.scss';
-import funBird from '../../assets/img/evgenialno.png'
+import funBirdPath from '../../assets/img/evgenialno.png'
+import svgLoader from '../../assets/imgIoaders/tail-spin.svg'
 import { getDeclension } from "./helpers/getDeclension";
 
 const ResultWindow: React.FunctionComponent<SystemState> = ({categoryBird}) => {
-    // eslint-disable-next-line no-restricted-globals
-    const resetGame = () => location.reload();
+    const resetGame = () => window.location.reload();
     const totalScore = categoryBird.score + categoryBird.scoreCategory;
     const scoreDeclension = getDeclension(totalScore);
+    const funBirdImage = new Image();
+    funBirdImage.src = funBirdPath;
+    const [loadImgState, setLoadImageState] = useState(false);
+    funBirdImage.addEventListener('load', () => {
+        setLoadImageState(true);
+    })
     return (
         <section className='result_section'>
             <div className='result_container'>
                 { categoryBird.score === 30 ? (
                     <div className='fun_result_container'>
-                        <img className='fun_bird_img' src={funBird} alt='Fun bird'/>
+                        {loadImgState ?
+                            <img className='fun_bird_img'
+                                             src={funBirdPath}
+                                             alt='Fun bird'/> :
+                            <div className='fun_loader_container'>
+                                <img className='bird_image_loader'
+                                     src={svgLoader}
+                                     alt='Fun bird'/>
+                            </div>
+                        }
+
                         <button onClick={resetGame} className='button_reset_game'>Еще раз?</button>
                     </div>
                     ) : (

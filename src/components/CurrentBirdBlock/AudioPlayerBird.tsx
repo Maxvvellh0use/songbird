@@ -38,6 +38,7 @@ interface AudioProps {
 }
 
 const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, audioBird, selectBird, currentBird}) => {
+    console.log(audioBird)
     const audioBirdCurrent = audioBird.currentAudio;
     const audioBirdSelect = audioBird.selectAudio;
     const [audioButtonImage, setAudioButton] = useState(playButton);

@@ -49,7 +49,8 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         timeBarBackground: '',
         volumeIcon: '',
         volumeInput: '',
-    }
+    };
+    console.log(currentBird.name);
     const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
     useEffect(() => {
         if (isCorrectBird()) {
