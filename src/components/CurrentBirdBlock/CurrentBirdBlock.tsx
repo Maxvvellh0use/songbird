@@ -1,13 +1,12 @@
 import AudioPlayerBird from "./AudioPlayerBird";
 import './current-bird.scss';
 import altBirdImage from '../../assets/img/alt_bird_image.png';
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { connect } from "react-redux";
 import { createNewBird } from "../../redux/actions";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import axios from "axios";
 import altBirdImagePath from "../../assets/img/alt_bird_image.png";
-import svgLoader from "../../assets/img loaders/tail-spin.svg";
 
 interface PropsWithCreateNewBird {
     currentBird: {
@@ -40,8 +39,8 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         name: '******',
         image: altBirdImage
     }
-
-    const isCorrectBird = () => currentBird.name === selectBird.name;
+    const isCorrectBird = useCallback(() =>
+        currentBird.name === selectBird.name, [currentBird, selectBird]);
     const thumbClasses = {
         button: '',
         timeBar: '',
@@ -51,7 +50,6 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         volumeIcon: '',
         volumeInput: '',
     }
-    console.log(currentBird.name)
     const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
     useEffect(() => {
         if (isCorrectBird()) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { connect } from "react-redux";
 import playButton from '../../assets/svg/play-button.svg'
 import pauseButton from '../../assets/svg/pause-button.svg';
@@ -41,9 +41,8 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, 
     const audioBirdCurrent = audioBird.currentAudio;
     const audioBirdSelect = audioBird.selectAudio;
     const [audioButtonImage, setAudioButton] = useState(playButton);
-    const isCorrectBird = () => {
-        return currentBird.name === selectBird.name
-    }
+    const isCorrectBird = useCallback(() =>
+        currentBird.name === selectBird.name, [currentBird, selectBird]);
     useEffect(() => {
         if (isCorrectBird()) {
             audioBirdCurrent.pause()

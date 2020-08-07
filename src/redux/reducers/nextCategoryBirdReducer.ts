@@ -1,4 +1,4 @@
-import { NEXT_CATEGORY_BIRD, NextCategoryBird, SystemState } from "../types";
+import { NEXT_CATEGORY_BIRD, SystemState } from "../types";
 import birdsData from "../../data/birdsData";
 import { startCategoryIndex } from "../../components/CurrentBirdBlock/consts";
 import { getRandomBirdIndex } from "../../components/CurrentBirdBlock/helpers/getRandomBirdIndex";

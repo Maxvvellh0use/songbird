@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import AnswerOptionsBlock from "../AnswerOptionsBlock/AnswerOptionsBlock";
 import DescriptionBirdBlock from "../DescriptionBirdBlock/DescriptionBirdBlock";
 import { Button } from "../Buttons/Button";
 import { connect } from "react-redux";
-import {mapStateToProps} from "../../redux/mapStateToProps";
-import {createNewBird, nextCategoryBird, selectNewBird, setAudioBird} from "../../redux/actions";
+import { mapStateToProps } from "../../redux/mapStateToProps";
+import { createNewBird, nextCategoryBird, selectNewBird, setAudioBird } from "../../redux/actions";
 import birdsData from "../../data/birdsData";
-import {getRandomBirdIndex} from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
-import {defaultSelectList} from "../../redux/consts";
-import {increaseCoefficient, startIndex} from "./consts";
+import { getRandomBirdIndex } from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
+import { defaultSelectList } from "../../redux/consts";
+import { increaseCoefficient, startIndex } from "./consts";
 
 interface PropsCategoryBird {
     currentBird: {

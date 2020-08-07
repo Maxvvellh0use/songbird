@@ -1,6 +1,6 @@
 import birdsData from "./birdsData";
 import { birdsCategories } from "./birdsCategories";
-import {startCategoryIndex} from "../components/CurrentBirdBlock/consts";
+import { startCategoryIndex } from "../components/CurrentBirdBlock/consts";
 
 export const getAllBirdsNames = (): [][] => {
     const allBirds: Array<object> = [];

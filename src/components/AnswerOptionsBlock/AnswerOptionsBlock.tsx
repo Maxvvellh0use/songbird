@@ -1,13 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './answer-options-block.scss'
 import { getAllBirdsNames } from "../../data/allBirdsNames";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../redux/mapStateToProps";
-import {nextCategoryBird, selectNewBird, setAudioBird} from "../../redux/actions";
-import {defaultSelectList} from "../../redux/consts";
-import axios from "axios";
-import {useLoadImage} from "../Hooks/useLoadImage/useLoadImage";
-import altBirdImagePath from "../../assets/img/alt_bird_image.png";
+import { nextCategoryBird, selectNewBird, setAudioBird } from "../../redux/actions";
 
 interface PropsCurrentSelect {
     currentBird: {

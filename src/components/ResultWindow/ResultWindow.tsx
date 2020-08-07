@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { SystemState } from "../../redux/types";
 import './result-window.scss';
 import funBird from '../../assets/img/evgenialno.png'
-import {getDeclension} from "./helpers/getDeclension";
+import { getDeclension } from "./helpers/getDeclension";
 
 const ResultWindow: React.FunctionComponent<SystemState> = ({categoryBird}) => {
     // eslint-disable-next-line no-restricted-globals

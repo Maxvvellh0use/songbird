@@ -2,7 +2,7 @@ import {
     CREATE_NEW_BIRD,
     CreateNewBirdAction,
     NEXT_CATEGORY_BIRD,
-    NextCategoryBird, NextCategoryBirdAction,
+    NextCategoryBirdAction,
     SELECT_BIRD,
     SelectBirdAction, SET_AUDIO_BIRD, SetAudioBird, SetAudioBirdAction, SystemState
 } from "./types";

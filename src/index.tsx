@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import './style/index.scss';
 import { App } from './App';
 import 'bootstrap/dist/css/bootstrap.css';
-import { compose, createStore } from "redux";
+import { createStore } from "redux";
 import { Provider } from 'react-redux';
 import { rootReducer } from "./redux/rootReducer";
 import { initialState } from "./redux/reducers/nextCategoryBirdReducer";
