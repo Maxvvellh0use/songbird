@@ -7,6 +7,7 @@ import { createNewBird } from "../../redux/actions";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import axios from "axios";
 import altBirdImagePath from "../../assets/img/alt_bird_image.png";
+import svgLoader from "../../assets/img loaders/tail-spin.svg";
 
 interface PropsWithCreateNewBird {
     currentBird: {
@@ -39,6 +40,7 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         name: '******',
         image: altBirdImage
     }
+
     const isCorrectBird = () => currentBird.name === selectBird.name;
     const thumbClasses = {
         button: '',
@@ -50,21 +52,24 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
         volumeInput: '',
     }
     console.log(currentBird.name)
-    const [selectBirdImageState, setSelectBirdImageState] = useState(altBirdImagePath);
+    const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
     useEffect(() => {
-        axios.get(selectBird.image).then(res => {
-            return setSelectBirdImageState(selectBird.image);
-        }).catch(err => {
-            return setSelectBirdImageState(altBirdImagePath);
-        });
-    }, [selectBirdImageState, selectBird])
+        if (isCorrectBird()) {
+            axios.get(currentBird.image).then(() => {
+                setSelectBirdImageState(currentBird.image);
+            }).catch(() => {
+                setSelectBirdImageState(altBirdImagePath);
+            });
+        }
+    }, [isCorrectBird, imageBirdLazyLoadState, currentBird])
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>
                 <div className='image_bird_container'>
                     <img className='image_bird'
-                         src={isCorrectBird() ? selectBirdImageState : alternativeBird.image}
-                         alt={currentBird.name}/>
+                                    src={isCorrectBird() ? imageBirdLazyLoadState : alternativeBird.image}
+                                    alt={currentBird.name}/>
+
                 </div>
                 <div className='name_and_audio'>
                     <p className='current_bird_name'>{isCorrectBird() ?

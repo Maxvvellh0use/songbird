@@ -36,6 +36,16 @@
   border-radius: 10px;
 }
 
+.loader_image_container {
+  @extend %flex_row_center_center;
+  width: 200px;
+  height: 155px;
+}
+
+.bird_image_loader {
+  width: 70px;
+}
+
 .bird_name {
   margin-bottom: 0;
   font-size: 30px;
@@ -47,10 +57,6 @@
   width: 100%;
   margin-left: 20px;
   padding-bottom: 10px;
-}
-
-.description_bird_block__description {
-
 }
 
 .description__bird_description {

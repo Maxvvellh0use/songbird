@@ -4,12 +4,11 @@ import { connect } from "react-redux";
 import { defaultTextDescriptionBlock } from "./const";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import AudioPlayerBird from "../CurrentBirdBlock/AudioPlayerBird";
-import { useLoadImage } from "../Hooks/useLoadImage/useLoadImage";
-import altBirdImagePath from '../../assets/img/alt_bird_image.png';
-import axios from 'axios';
+import svgLoader from '../../assets/img loaders/tail-spin.svg'
+import altBirdImagePath from "../../assets/img/alt_bird_image.png";
+import axios from "axios";
 
 interface DescriptionProps {
-    selectBirdImage: string,
     selectBird: {
         name: string,
         image: string,
@@ -22,7 +21,7 @@ interface DescriptionProps {
     }
 }
 
-const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBirdImage, selectBird}) => {
+const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({selectBird}) => {
     const defaultDescriptionState = selectBird.name ? ' hidden' : '';
     const descriptionBirdState = selectBird.name ? '' : ' hidden';
     const thumbClasses = {
@@ -34,6 +33,18 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
         volumeIcon: ' volume_icon_thumb',
         volumeInput: ' volume_input'
     }
+    const [loadImgState, setLoadImageState] = useState(false);
+    const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
+    useEffect(() => {
+        setLoadImageState(false);
+        axios.get(selectBird.image).then(res => {
+            setSelectBirdImageState(selectBird.image);
+            setLoadImageState(true);
+        }).catch(err => {
+            setSelectBirdImageState(altBirdImagePath);
+            setLoadImageState(true);
+        });
+    }, [imageBirdLazyLoadState, selectBird])
     return (
         <div className='description_bird_block'>
             <div className={'description_default' + defaultDescriptionState}>
@@ -42,7 +53,17 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
             <div className={'description_bird_block__description' + descriptionBirdState}>
                 <div className='image_and_audio'>
                     <div className='image_container'>
-                        <img className='bird_image' src={selectBirdImage} alt={selectBird.name}/>
+                        {loadImgState ?
+                                <img className='bird_image'
+                                src={imageBirdLazyLoadState}
+                                alt={selectBird.name}/>
+                            :
+                            <div className='loader_image_container'>
+                                <img className='bird_image_loader'
+                                     src={svgLoader}
+                                     alt={selectBird.name}/>
+                            </div>
+                        }
                     </div>
                     <div className='audio_block'>
                         <p className='bird_name'>{selectBird.name}</p>
