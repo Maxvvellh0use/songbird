@@ -11,6 +11,9 @@
   @media (max-width: 768px) {
     font-size: 40px;
   }
+  @media (max-width: 368px) {
+    height: 35vh;
+  }
 }
 
 .button_reset_game {
@@ -21,11 +24,22 @@
   background: $color-birds-list;
   color: snow;
   padding: 5px;
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
 }
 
 .fun_bird_img {
   margin-top: 200px;
   width: 650px;
+  @media (max-width: 768px) {
+    margin-top: 60px;
+    width: 70vw;
+  }
+  @media (max-width: 368px) {
+    margin-top: 0;
+    width: 250px;
+  }
 }
 
 .fun_loader_container {
