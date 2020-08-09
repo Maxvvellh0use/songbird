@@ -36,6 +36,7 @@ interface PropsCategoryBird {
     },
     audioBird: {
         currentAudio: HTMLAudioElement,
+        selectAudio: HTMLAudioElement,
     }
     nextCategoryBird: any,
     createNewBird: any,
@@ -44,7 +45,7 @@ interface PropsCategoryBird {
 }
 
 const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
-    ({setAudioBird, selectNewBird, nextCategoryBird, currentBird, selectBird, createNewBird, categoryBird}) => {
+    ({audioBird, setAudioBird, selectNewBird, nextCategoryBird, currentBird, selectBird, createNewBird, categoryBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
     const [categoryBirdState, setCategoryBirdState] = useState(startIndex);
     const isCorrectBird = () => {
@@ -55,6 +56,8 @@ const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
     }
     const nextLevelHandler = () => {
         if (categoryBird.categoryIndex < 5) {
+            audioBird.currentAudio.pause();
+            audioBird.selectAudio.pause();
             const copyArrayHeaderClasses = currentBird.activeHeaderClass.slice();
             copyArrayHeaderClasses[categoryBird.categoryIndex] = '';
             copyArrayHeaderClasses[categoryBird.categoryIndex + increaseCoefficient] = ' bird_list_item__active';
