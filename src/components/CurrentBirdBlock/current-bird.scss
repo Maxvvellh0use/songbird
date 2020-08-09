@@ -10,6 +10,10 @@
   max-height: 250px;
   border-radius: 5px;
   background: $color-main-blocks;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-height: 450px;
+  }
 }
 
 .current_bird_name {
@@ -18,6 +22,9 @@
   font-size: 30px;
   margin-top: 10px;
   white-space: pre;
+  @media (max-width: 768px) {
+    margin: auto;
+  }
 }
 
 .image_bird {
@@ -26,16 +33,45 @@
   margin: 10px;
   object-fit: cover;
   border-radius: 10px;
+  @media (max-width: 768px) {
+    margin: 10px 0 0;
+  }
+  @media (max-width: 468px) {
+    margin: 10px 0 0;
+    width: 140px;
+    max-height: 95px;
+  }
 }
 
 .image_bird_container {
   width: 250px;
   height: 195px;
   overflow: hidden;
+  @media (max-width: 768px) {
+    margin: auto;
+  }
+  @media (max-width: 468px) {
+    width: 140px;
+    max-height: 125px;
+  }
 }
 
 .name_and_audio {
   margin-left: 2rem;
+  @media (max-width: 1020px) {
+    margin-left: 10px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+.button_play_and_time_bar_container {
+  @extend %flex_row_space-between;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 }
 
 .audio_block {
@@ -48,6 +84,10 @@
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 1020px) {
+    width: 40px;
+    text-align: center;
+  }
 }
 
 .audio_player_container {
@@ -55,6 +95,9 @@
   padding-top: 20px;
   border-top: 1px solid $color-body;
   justify-content: left;
+  @media (max-width: 1020px) {
+    flex-direction: column;
+  }
 }
 
 
@@ -62,6 +105,11 @@
 .time {
   @extend %flex_row_space-between;
   height: 15px;
+  @media (max-width: 1020px) {
+   font-size: 14px;
+    margin-right: 10px;
+  }
+
 }
 
 .audio_player__volume {
@@ -76,6 +124,9 @@
 
 .volume_icon {
   width: 40px;
+  @media (max-width: 1020px) {
+    width: 30px;
+  }
 }
 
 
@@ -85,6 +136,9 @@
   margin-top: 15px;
   align-self: center;
   margin-left: 30px;
+  @media (max-width: 1020px) {
+    margin-left: 10px;
+  }
 }
 
 .timebar {
@@ -92,6 +146,15 @@
   height: 10px;
   border-radius: 5px;
   background: $color-answer-options-hover;
+  @media (max-width: 1020px) {
+    width: 70vw;
+    height: 5px;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  @media (max-width: 420px) {
+    width: 50vw;
+  }
 }
 
 .timebar_background {
@@ -99,6 +162,10 @@
   height: 10px;
   border-radius: 5px;
   z-index: 2;
+  @media (max-width: 1020px) {
+    height: 5px;
+    border-radius: 3px;
+  }
 }
 
 .volume_icon_thumb {

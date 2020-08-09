@@ -104,19 +104,21 @@ const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, 
     })
     return (
         <div className={'audio_player_container' + thumb.container}>
-            <img onClick={playAudio}
-                 data-target={targetId}
-                 className={'play_pause_button' + thumb.button}
-                 src={audioButtonImage}
-                 alt='play button'/>
-            <div className={'audio_player__timebar' + thumb.timeBarContainer}>
-                <div className={'timebar' + thumb.timeBar}>
-                    <div style={{background: '#6286BD', width: getPercent(startTimeState/audioBirdCurrent.duration)}}
-                         className={'timebar_background' + thumb.timeBarBackground}/>
-                </div>
-                <div className='time'>
-                    <p className='start_time'>00:{startTime < 10 ? '0' + startTime : startTime}</p>
-                    <p className='full_time'>{fullTimeState}</p>
+            <div className='button_play_and_time_bar_container'>
+                <img onClick={playAudio}
+                     data-target={targetId}
+                     className={'play_pause_button' + thumb.button}
+                     src={audioButtonImage}
+                     alt='play button'/>
+                <div className={'audio_player__timebar' + thumb.timeBarContainer}>
+                    <div className={'timebar' + thumb.timeBar}>
+                        <div style={{background: '#6286BD', width: getPercent(startTimeState/audioBirdCurrent.duration)}}
+                             className={'timebar_background' + thumb.timeBarBackground}/>
+                    </div>
+                    <div className='time'>
+                        <p className='start_time'>00:{startTime < 10 ? '0' + startTime : startTime}</p>
+                        <p className='full_time'>{fullTimeState}</p>
+                    </div>
                 </div>
             </div>
             <div className='audio_player__volume'>

@@ -24,10 +24,16 @@ code {
 .wrapper {
   margin: auto;
   max-width: $width-wrapper;
+  @media (max-width: 1160px) {
+    margin: 10px;
+  }
 }
 
 .wrapper_functional_block {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 1160px) {
+    flex-direction: column;
+  }
 }

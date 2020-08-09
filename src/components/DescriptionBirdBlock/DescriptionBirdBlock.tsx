@@ -68,7 +68,9 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
                     <div className='audio_block'>
                         <p className='bird_name'>{selectBird.name}</p>
                         <span className='bird_species'>{selectBird.species}</span>
-                        <AudioPlayerBird targetId={'descriptionBlock'} thumb={thumbClasses}/>
+                        <div className='audio_description'>
+                            <AudioPlayerBird targetId={'descriptionBlock'} thumb={thumbClasses}/>
+                        </div>
                     </div>
                 </div>
                 <p className='description__bird_description'>{selectBird.description}</p>

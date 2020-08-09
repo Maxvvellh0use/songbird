@@ -6,6 +6,21 @@
   color: snow;
   align-items: center;
   margin-top: 20px;
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
+}
+
+.main_title {
+  @media (max-width: 368px) {
+    font-size: 30px;
+  }
+}
+
+.score__score_counter {
+  @media (max-width: 368px) {
+    font-size: 13px;
+  }
 }
 
 .navigation_birds__list {
@@ -17,6 +32,10 @@
   background: $color-birds-list;
   color: snow;
   border-radius: 5px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 .bird_list_item {
@@ -24,6 +43,9 @@
   @extend %my-transition;
   width: 190px;
   height: 40px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .bird_list_item__active {
