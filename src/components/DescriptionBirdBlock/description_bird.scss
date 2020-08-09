@@ -11,7 +11,9 @@
   color: snow;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: left;
   @media (max-width: 1160px) {
+    text-align: center;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -42,6 +44,10 @@
   height: 155px;
   object-fit: cover;
   border-radius: 10px;
+  @media (max-width: 268px) {
+    width: 150px;
+    height: 100px;
+  }
 }
 
 .loader_image_container {
@@ -76,9 +82,9 @@
 .description__bird_description {
   margin-top: 10px;
   max-height: 96px;
+  text-align: justify;
   @media (max-width: 768px) {
     margin: 5px;
-    text-align: justify;
     font-size: 14px;
     max-height: 100%;
     height: 100%;
