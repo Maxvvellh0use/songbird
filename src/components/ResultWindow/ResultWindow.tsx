@@ -7,8 +7,10 @@ import funBirdPath from '../../assets/img/evgenialno.png'
 import svgLoader from '../../assets/imgIoaders/tail-spin.svg'
 import { getDeclension } from "./helpers/getDeclension";
 
-const ResultWindow: React.FunctionComponent<SystemState> = ({categoryBird}) => {
+const ResultWindow: React.FunctionComponent<SystemState> = ({audioBird, categoryBird}) => {
     const resetGame = () => window.location.reload();
+    audioBird.currentAudio.pause();
+    audioBird.selectAudio.pause();
     const totalScore = categoryBird.score + categoryBird.scoreCategory;
     const scoreDeclension = getDeclension(totalScore);
     const funBirdImage = new Image();
