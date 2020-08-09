@@ -14,8 +14,9 @@ const Header: React.FunctionComponent<SystemState> = ({categoryBird, selectBird,
         <header className="header">
             <div className="wrapper wrapper_header">
                 <div className="title_and_score">
-                    <div className="title">
-                        <h1 className='main_title'>SongBird</h1>
+                    <div className="logo">
+                        <span className='main_logo'/>
+                        <h1 className='main_logo_title'>SongBird</h1>
                     </div>
                     <div className="score">
                         <span className="score__score_counter">SCORE {totalScore}</span>

@@ -36,7 +36,6 @@ interface PropsCategoryBird {
     },
     audioBird: {
         currentAudio: HTMLAudioElement,
-        selectAudio: HTMLAudioElement,
     }
     nextCategoryBird: any,
     createNewBird: any,

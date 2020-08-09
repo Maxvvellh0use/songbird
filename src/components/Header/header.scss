@@ -11,9 +11,27 @@
   }
 }
 
-.main_title {
+.main_logo_block {
+  display: flex;
+}
+
+.main_logo_title {
+  visibility: hidden;
+  font-size: 0;
+  margin: 0;
+}
+
+.main_logo {
+  display: block;
+  width: 200px;
+  height: 90px;
+  background-image: url("../../assets/img/main_logo.png");
+  background-repeat: no-repeat;
+  background-size: 200px;
   @media (max-width: 368px) {
-    font-size: 30px;
+    width: 100px;
+    background-size: 100px;
+    height: 45px;
   }
 }
 
