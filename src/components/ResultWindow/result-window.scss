@@ -8,6 +8,9 @@
   height: 40vh;
   color: snow;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 }
 
 .button_reset_game {
