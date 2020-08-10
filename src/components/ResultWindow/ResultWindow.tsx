@@ -7,6 +7,8 @@ import funBirdPath from '../../assets/img/evgenialno.png'
 import svgLoader from '../../assets/imgIoaders/tail-spin.svg'
 import { getDeclension } from "./helpers/getDeclension";
 
+const maxScore = 36;
+
 const ResultWindow: React.FunctionComponent<SystemState> = ({audioBird, categoryBird}) => {
     const resetGame = () => window.location.reload();
     audioBird.currentAudio.pause();
@@ -22,7 +24,7 @@ const ResultWindow: React.FunctionComponent<SystemState> = ({audioBird, category
     return (
         <section className='result_section'>
             <div className='result_container'>
-                { categoryBird.score === 30 ? (
+                { categoryBird.score === maxScore ? (
                     <div className='fun_result_container'>
                         {loadImgState ?
                             <img className='fun_bird_img'

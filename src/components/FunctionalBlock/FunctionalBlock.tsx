@@ -12,22 +12,12 @@ import { increaseCoefficient, startIndex } from "./consts";
 
 interface PropsCategoryBird {
     currentBird: {
-        audio: string,
-        description: string,
-        id: number,
-        image: string,
         name: string,
-        species: string,
         otherBirdsInCategory: object[],
         activeHeaderClass: string[],
     },
     selectBird: {
-        audio: string,
-        description: string,
-        id: number,
-        image: string,
         name: string,
-        species: string,
     },
     categoryBird: {
         categoryIndex: number,

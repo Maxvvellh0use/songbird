@@ -8,20 +8,12 @@ import { nextCategoryBird, selectNewBird, setAudioBird } from "../../redux/actio
 interface PropsCurrentSelect {
     currentBird: {
         audio: string,
-        description: string,
-        id: number,
-        image: string,
         name: string,
-        species: string,
         otherBirdsInCategory: object[],
     },
     selectBird: {
         audio: string,
-        description: string,
-        id: number,
-        image: string,
         name: string,
-        species: string,
         activeListClass: string[],
     },
     categoryBird: {

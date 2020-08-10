@@ -11,21 +11,12 @@ import altBirdImagePath from "../../assets/img/alt_bird_image.png";
 interface PropsWithCreateNewBird {
     currentBird: {
         audio: string,
-        description: string,
-        id: number,
         image: string,
         name: string,
-        species: string,
-        otherBirdsInCategory: object[],
     },
     selectBird: {
-        audio: string,
-        description: string,
-        id: number,
         image: string,
         name: string,
-        species: string,
-        activeListClass: string[],
     },
     categoryBird: {
         categoryIndex: number
