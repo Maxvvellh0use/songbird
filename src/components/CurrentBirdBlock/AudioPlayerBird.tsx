@@ -10,17 +10,10 @@ import { getCorrectClock } from "./helpers/getCorrectClock";
 import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 import { mapStateToProps } from "../../redux/mapStateToProps";
+import {SystemState} from "../../redux/types";
 
-export interface AudioState {
+export interface AudioState extends SystemState {
     targetId?: string,
-    currentBird: {
-        audio: string,
-        name: string,
-    },
-    selectBird: {
-        audio: string,
-        name: string,
-    },
     thumb: {
         button: string,
         timeBar: string,
@@ -30,19 +23,6 @@ export interface AudioState {
         volumeIcon: string,
         volumeInput: string,
     },
-    categoryBird: {
-        categoryIndex: number,
-        scoreCategory: number,
-        score: number,
-    },
-    audioBird: {
-        selectAudio: HTMLAudioElement,
-        currentAudio: HTMLAudioElement,
-    },
-    selectNewBird?: any,
-    setAudioBird?: any,
-    nextCategoryBird?: any,
-    createNewBird?: any,
 }
 
 const AudioPlayerBird: React.FunctionComponent<AudioState> = ({targetId, thumb, audioBird, selectBird, currentBird}) => {
