@@ -13,7 +13,7 @@ import { mapStateToProps } from "../../redux/mapStateToProps";
 import {SystemState} from "../../redux/types";
 
 export interface AudioState extends SystemState {
-    targetId?: string,
+    targetId: string,
     thumb: {
         button: string,
         timeBar: string,
