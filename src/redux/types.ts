@@ -6,7 +6,6 @@ export interface CreateNewBirdAction {
 }
 
 export interface SystemState {
-    targetId?: string,
     currentBird: {
         audio: string,
         description: string,
@@ -25,15 +24,6 @@ export interface SystemState {
         name: string,
         species: string,
         activeListClass: string[],
-    },
-    thumb?: {
-        button: string,
-        timeBar: string,
-        container: string,
-        timeBarContainer: string,
-        timeBarBackground: string,
-        volumeIcon: string,
-        volumeInput: string,
     },
     categoryBird: {
         categoryIndex: number,
