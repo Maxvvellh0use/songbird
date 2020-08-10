@@ -11,12 +11,14 @@ import { getPercent } from "./helpers/getPercent";
 import { defaultTimeout, startVolume, volumeCoefficient } from "./consts";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 
-interface AudioProps {
-    targetId: string,
+export interface AudioState {
+    targetId?: string,
     currentBird: {
+        audio: string,
         name: string,
     },
     selectBird: {
+        audio: string,
         name: string,
     },
     thumb: {
@@ -29,15 +31,21 @@ interface AudioProps {
         volumeInput: string,
     },
     categoryBird: {
-        categoryIndex: number
+        categoryIndex: number,
+        scoreCategory: number,
+        score: number,
     },
     audioBird: {
         selectAudio: HTMLAudioElement,
         currentAudio: HTMLAudioElement,
-    }
+    },
+    selectNewBird?: any,
+    setAudioBird?: any,
+    nextCategoryBird?: any,
+    createNewBird?: any,
 }
 
-const AudioPlayerBird: React.FunctionComponent<AudioProps> = ({targetId, thumb, audioBird, selectBird, currentBird}) => {
+const AudioPlayerBird: React.FunctionComponent<AudioState> = ({targetId, thumb, audioBird, selectBird, currentBird}) => {
     const audioBirdCurrent = audioBird.currentAudio;
     const audioBirdSelect = audioBird.selectAudio;
     const [audioButtonImage, setAudioButton] = useState(playButton);

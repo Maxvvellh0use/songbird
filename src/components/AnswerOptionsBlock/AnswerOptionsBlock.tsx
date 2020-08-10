@@ -4,33 +4,10 @@ import { getAllBirdsNames } from "../../data/allBirdsNames";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import { nextCategoryBird, selectNewBird, setAudioBird } from "../../redux/actions";
+import { SystemState } from "../../redux/types";
 
-interface PropsCurrentSelect {
-    currentBird: {
-        audio: string,
-        name: string,
-        otherBirdsInCategory: object[],
-    },
-    selectBird: {
-        audio: string,
-        name: string,
-        activeListClass: string[],
-    },
-    categoryBird: {
-        categoryIndex: number
-        scoreCategory: number,
-        score: number
-    },
-    audioBird: {
-        selectAudio: HTMLAudioElement,
-        currentAudio: HTMLAudioElement,
-    }
-    selectNewBird: any,
-    setAudioBird: any,
-    nextCategoryBird: any,
-}
 
-const AnswerOptionsBlock: React.FunctionComponent<PropsCurrentSelect> =
+const AnswerOptionsBlock: React.FunctionComponent<SystemState> =
     ({nextCategoryBird, audioBird, selectNewBird, currentBird, selectBird, categoryBird}) => {
     const errorSound: HTMLAudioElement = new Audio(require('../../assets/audio/error-sound.mp3'));
     const correctSound: HTMLAudioElement = new Audio(require('../../assets/audio/correct-sound.mp3'));

@@ -6,6 +6,7 @@ export interface CreateNewBirdAction {
 }
 
 export interface SystemState {
+    targetId?: string,
     currentBird: {
         audio: string,
         description: string,
@@ -25,6 +26,15 @@ export interface SystemState {
         species: string,
         activeListClass: string[],
     },
+    thumb?: {
+        button: string,
+        timeBar: string,
+        container: string,
+        timeBarContainer: string,
+        timeBarBackground: string,
+        volumeIcon: string,
+        volumeInput: string,
+    },
     categoryBird: {
         categoryIndex: number,
         scoreCategory: number,
@@ -33,7 +43,11 @@ export interface SystemState {
     audioBird: {
         selectAudio: HTMLAudioElement,
         currentAudio: HTMLAudioElement,
-    }
+    },
+    selectNewBird?: any,
+    setAudioBird?: any,
+    nextCategoryBird?: any,
+    createNewBird?: any,
 }
 
 export const SELECT_BIRD: string = 'SELECT_BIRD';

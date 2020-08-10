@@ -7,25 +7,9 @@ import { createNewBird } from "../../redux/actions";
 import { mapStateToProps } from "../../redux/mapStateToProps";
 import axios from "axios";
 import altBirdImagePath from "../../assets/img/alt_bird_image.png";
+import { SystemState } from "../../redux/types";
 
-interface PropsWithCreateNewBird {
-    currentBird: {
-        audio: string,
-        image: string,
-        name: string,
-    },
-    selectBird: {
-        image: string,
-        name: string,
-    },
-    categoryBird: {
-        categoryIndex: number
-        score: number
-    }
-    createNewBird: any
-}
-
-const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, currentBird}) => {
+const CurrentBirdBlock: React.FC<SystemState> = ({selectBird, currentBird}) => {
     const alternativeBird = {
         name: '******',
         image: altBirdImage
@@ -44,6 +28,17 @@ const CurrentBirdBlock: React.FC<PropsWithCreateNewBird> = ({selectBird, current
     console.log(currentBird.name);
     const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
     useEffect(() => {
+        const origin = window.location.protocol + '//' + window.location.host;
+        // const headers: AxiosRequestConfig = {
+        //     headers: {
+        //        Origin : 'http://localhost:3000',
+        //        mode: 'cors'
+        //     }
+        // }
+        // const res = axios.get('https://cors-anywhere.herokuapp.com/www.xeno-canto.org/api/2/recordings?query=Scolopax rusticola', headers).then((resp) => {
+        //     console.log(resp)
+        // });
+        // console.log(res)
         if (isCorrectBird()) {
             axios.get(currentBird.image).then(() => {
                 setSelectBirdImageState(currentBird.image);

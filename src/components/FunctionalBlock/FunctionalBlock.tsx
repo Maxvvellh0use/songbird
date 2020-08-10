@@ -9,32 +9,9 @@ import birdsData from "../../data/birdsData";
 import { getRandomBirdIndex } from "../CurrentBirdBlock/helpers/getRandomBirdIndex";
 import { defaultSelectList } from "../../redux/consts";
 import { increaseCoefficient, startIndex } from "./consts";
+import { SystemState } from "../../redux/types";
 
-interface PropsCategoryBird {
-    currentBird: {
-        name: string,
-        otherBirdsInCategory: object[],
-        activeHeaderClass: string[],
-    },
-    selectBird: {
-        name: string,
-    },
-    categoryBird: {
-        categoryIndex: number,
-        scoreCategory: number,
-        score: number,
-    },
-    audioBird: {
-        currentAudio: HTMLAudioElement,
-        selectAudio: HTMLAudioElement,
-    }
-    nextCategoryBird: any,
-    createNewBird: any,
-    selectNewBird: any,
-    setAudioBird: any
-}
-
-const FunctionalBlock: React.FunctionComponent<PropsCategoryBird> =
+const FunctionalBlock: React.FunctionComponent<SystemState> =
     ({audioBird, setAudioBird, selectNewBird, nextCategoryBird, currentBird, selectBird, createNewBird, categoryBird}) => {
     const randomBirdIndex: number = getRandomBirdIndex();
     const [categoryBirdState, setCategoryBirdState] = useState(startIndex);
