@@ -1,5 +1,5 @@
 import { CREATE_NEW_BIRD, SystemState } from "../types";
-import {defaultSelectList} from "../consts";
+import { defaultSelectList } from "../consts";
 
 const initialState: SystemState = {
     currentBird: {
@@ -32,7 +32,7 @@ const initialState: SystemState = {
     }
 }
 
-export const currentBirdReducer = (state = initialState, action: any) => {
+export const currentBirdReducer = (state = initialState, action: { type: string, payload: any }) => {
     switch (action.type) {
         case CREATE_NEW_BIRD:
             return action.payload

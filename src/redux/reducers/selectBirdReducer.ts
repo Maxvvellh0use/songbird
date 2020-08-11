@@ -13,7 +13,7 @@ const initialState: SelectBird = {
     }
 }
 
-export const selectBirdReducer = (state = initialState, action: any) => {
+export const selectBirdReducer = (state = initialState, action: { type: string, payload: any }) => {
     switch (action.type) {
         case SELECT_BIRD:
             return action.payload

@@ -7,7 +7,7 @@ const initialState: SetAudioBird = {
     }
 }
 
-export const setAudioBirdReducer = (state = initialState, action: any) => {
+export const setAudioBirdReducer = (state = initialState, action: { type: string, payload: any }) => {
     switch (action.type) {
         case SELECT_BIRD:
             return action.payload
