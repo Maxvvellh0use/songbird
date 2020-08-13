@@ -28,7 +28,6 @@ const CurrentBirdBlock: React.FC<SystemState> = ({selectBird, currentBird}) => {
     console.log(currentBird.name);
     const [imageBirdLazyLoadState, setSelectBirdImageState] = useState(altBirdImagePath);
     useEffect(() => {
-        const origin = window.location.protocol + '//' + window.location.host;
         // const headers: AxiosRequestConfig = {
         //     headers: {
         //        Origin : 'http://localhost:3000',
@@ -39,20 +38,20 @@ const CurrentBirdBlock: React.FC<SystemState> = ({selectBird, currentBird}) => {
         //     console.log(resp)
         // });
         // console.log(res)
-        if (isCorrectBird()) {
-            axios.get(currentBird.image).then(() => {
-                setSelectBirdImageState(currentBird.image);
-            }).catch(() => {
-                setSelectBirdImageState(altBirdImagePath);
-            });
-        }
+        // if (isCorrectBird()) {
+        //     axios.get(currentBird.image).then(() => {
+        //         setSelectBirdImageState(currentBird.image);
+        //     }).catch(() => {
+        //         setSelectBirdImageState(altBirdImagePath);
+        //     });
+        // }
     }, [isCorrectBird, imageBirdLazyLoadState, currentBird])
     return (
         <div className='wrapper'>
             <div className='current_bird_block'>
                 <div className='image_bird_container'>
                     <img className='image_bird'
-                                    src={isCorrectBird() ? imageBirdLazyLoadState : alternativeBird.image}
+                                    src={isCorrectBird() ? currentBird.image : alternativeBird.image}
                                     alt={currentBird.name}/>
 
                 </div>

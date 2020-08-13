@@ -38,8 +38,12 @@ const DescriptionBirdBlock: React.FunctionComponent<DescriptionProps> = ({select
     useEffect(() => {
         setLoadImageState(false);
         axios.get(selectBird.image).then(() => {
-            setSelectBirdImageState(selectBird.image);
-            setLoadImageState(true);
+            const selectBirdImage = new Image();
+            selectBirdImage.src = selectBird.image;
+            selectBirdImage.addEventListener('load', () => {
+                setSelectBirdImageState(selectBird.image);
+                setLoadImageState(true);
+            })
         }).catch(() => {
             setSelectBirdImageState(altBirdImagePath);
             setLoadImageState(true);
