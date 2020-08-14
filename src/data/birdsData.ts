@@ -93,10 +93,10 @@ const birdsData = [
         {
             id: 6,
             name: 'Цапля',
-            species: 'Asio otus',
+            species: 'Ardea cinerea',
             description: 'Цапли имеют грубый хриплый крик, похожий на низкое короткое карканье, с некоторыми модуляциями и оттенками. В колониях – подобные крики. Но вообще цапли довольно молчаливы.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Asio otus`,
-            audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Asio otus'
+            image: `https://protected-island-67916.herokuapp.com/birds/audio/Ardea cinerea`,
+            audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Ardea cinerea'
         }
     ],
     [
