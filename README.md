@@ -15,3 +15,5 @@ Songbird is a one-page application for recognizing birds by their voices.
 - Sass preprocessor for styling React components
 - Self-developed REST API
 - Node.js
+
+### ![image](./src/assets/img/screenshot-app.png)
