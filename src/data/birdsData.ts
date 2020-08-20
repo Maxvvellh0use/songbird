@@ -5,7 +5,7 @@ const birdsData = [
             name: 'Воробей',
             species: 'Passer domesticus',
             description: 'Домо́вый воробе́й — наиболее распространённый вид из рода настоящих воробьёв семейства воробьиных. Одна из самых известных птиц[3], обитающая по соседству с жилищем человека (отсюда её видовое название «домовый») и хорошо узнаваемая как по внешнему виду, так и по характерному чириканью.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Passer domesticus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Passer domesticus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Passer domesticus'
         },
         {
@@ -13,7 +13,7 @@ const birdsData = [
             name: 'Голубь',
             species: 'Columba livia',
             description: 'Вокализация — характерное для семейства в целом воркование: раскатистое, глухое урчание, особенно ярко выраженное у самцов в брачный период, когда они подзывают самок или метят территорию. Несколько иная тональность голоса, более спокойная и напоминающая скорее мурлыканье кошки, звучит во время насиживания яиц.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Columba livia`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Columba livia.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Columba livia'
         },
         {
@@ -21,7 +21,7 @@ const birdsData = [
             name: 'Горихвостка',
             species: 'Phoenicurus phoenicurus',
             description: 'Песня горихвостки – примитивная и весьма грубая трель наподобие "чьеер-чер-чер-чер-черр" и т.п. Обычно в песне есть хриплые элементы, как у каменок. Крики беспокойства – "фить-тек-тек-тек" и другие сочетания из свистового "фить" и щелкающего "тек".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Phoenicurus phoenicurus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Phoenicurus phoenicurus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Phoenicurus phoenicurus'
         },
         {
@@ -29,7 +29,7 @@ const birdsData = [
             name: 'Скворец',
             species: 'Sturnus vulgaris',
             description: 'Песня разнообразная, состоит из многих элементов, заимствованных от других птиц, и звуков иного, в том числе небиологического происхождения. Наиболее обычные собственные звуки – длинные мягкие «скворчащие»',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Sturnus vulgaris`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Sturnus vulgaris.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Sturnus vulgaris'
         },
         {
@@ -37,7 +37,7 @@ const birdsData = [
             name: 'Стриж',
             species: 'Apus apus',
             description: 'У стрижей скорее не пение, а пронзительный визг наподобие "стррриииии" или "виииирррриии". Весьма крикливы.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Apus apus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Apus apus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Apus apus'
         },
         {
@@ -45,7 +45,7 @@ const birdsData = [
             name: 'Трясогузка',
             species: 'Motacilla alba',
             description: 'Позывка – звонкое "цивлИть", "цирли", "цити" и т.п., реже – односложное "цли", "пти". При тревоге – те же звуки или короткие слитные фразы из нескольких таких криков. Поют редко, только в начале гнездового периода или при сильном беспокойстве.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Motacilla alba`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Motacilla alba.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Motacilla alba'
         }
     ],
@@ -55,7 +55,7 @@ const birdsData = [
             name: 'Беркут',
             species: 'Aquila chrysaetus',
             description: 'Голос беркута – типичный для орлов клекот – можно услышать во время брачных игр, общения с птенцами и находящимся на гнезде партером или при защите территории.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Aquila chrysaetus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Aquila chrysaetus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Aquila chrysaetus'
         },
         {
@@ -63,7 +63,7 @@ const birdsData = [
             name: 'Куропатка',
             species: 'Perdix',
             description: 'Для куропаток наиболее характерны скрипучие выкрики "чирр", "чир-рик", или "дзюрр-рик".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Perdix`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Perdix.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Perdix'
         },
         {
@@ -71,7 +71,7 @@ const birdsData = [
             name: 'Соловей',
             species: 'Luscinia luscinia',
             description: 'Справедливо считается лучшим певцом среди наших птиц. Песня громкая, яркая, запоминающаяся, состоит из четко различимых серий одинаковых звуков – "колен", которые неторопливо следуют одно за другим с небольшими разделительными паузами или слитно, песня звучит практически непрерывно в течение долгого времени.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Luscinia luscinia`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Luscinia luscinia.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Luscinia luscinia'
         },
         {
@@ -79,7 +79,7 @@ const birdsData = [
             name: 'Тетерев',
             species: 'Lyrurus tetrix',
             description: 'Если слушать бормотание одиночного тетерева, то можно различить в нем повторение одной и той же глуховатой фразы: "кАрру-кукАрру-куррррррр". Время от времени бормотание прерывается звонкими выкриками "ку-кАррр" и экспрессивными шипящими звуками, которые принято весьма точно изображать как "чуффышшш".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Lyrurus tetrix`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Lyrurus tetrix.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Lyrurus tetrix'
         },
         {
@@ -87,7 +87,7 @@ const birdsData = [
             name: 'Ушастая сова',
             species: 'Asio otus',
             description: 'Брачная песня самца состоит из глуховатых односложных криков, повторяемых несколько раз подряд: "хУу-хУу-хУу..." или "ду-ду-ду...". Это несколько похоже на кукование глухой кукушки, но звуки более глухие, редкие и не парные. В тундре можно спутать с токованием дутыша, но крики совы глуше, ниже тоном, ухающие.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Asio otus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Asio otus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Asio otus'
         },
         {
@@ -95,7 +95,7 @@ const birdsData = [
             name: 'Цапля',
             species: 'Ardea cinerea',
             description: 'Цапли имеют грубый хриплый крик, похожий на низкое короткое карканье, с некоторыми модуляциями и оттенками. В колониях – подобные крики. Но вообще цапли довольно молчаливы.',
-            image: `https://protected-island-67916.herokuapp.com/birds/audio/Ardea cinerea`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Ardea cinerea.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Ardea cinerea'
         }
     ],
@@ -105,7 +105,7 @@ const birdsData = [
             name: 'Гагара',
             species: 'Gavia',
             description: 'Гага́ры — род водоплавающих птиц, относящихся к монотипичному в настоящее время отряду гагарообразных. Голос очень громкий и разнообразный, состоит из пронзительных воплей и стонов. В период гнездования характерен громкий крик «га-га-га-ррра». У краснозобой гагары этот клич издают оба партнёра, у других же видов — только самец.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Gavia`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Gavia.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Gavia'
         },
         {
@@ -113,7 +113,7 @@ const birdsData = [
             name: 'Зимородок',
             species: 'Alcedo atthis',
             description: 'Зимородок имеет наиболее обычный контактный и тревожный крик – свистовое "пиик", "псиив" или двусложные крики "чикии", не очень громкие, но далеко слышные, издаваемые обычно небольшими сериями, иногда учащающиеся до трели "чричричричрит".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Alcedo atthis`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Alcedo atthis.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Alcedo atthis'
         },
         {
@@ -121,7 +121,7 @@ const birdsData = [
             name: 'Лебедь',
             species: 'Cygnus',
             description: 'Лебедь издает разнообразные громкие и очень благозвучные трубные крики – гукание, кликание и пр. Особенно часто подают голос весной.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Cygnus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Cygnus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Cygnus'
         },
         {
@@ -129,7 +129,7 @@ const birdsData = [
             name: 'Морянка',
             species: 'Mareca strepera',
             description: 'Морянка — шумная птица, особенно весной и в начале лета. Крик самца — громкое гортанное «а’ауллы», настолько характерное для этого вида, что местные жители называют морянку «аулейка» либо «авлик».',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Mareca strepera`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Mareca strepera.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Mareca strepera'
         },
         {
@@ -137,7 +137,7 @@ const birdsData = [
             name: 'Турпан',
             species: 'Melanitta fusca',
             description: 'Голос турпана удается слышать чрезвычайно редко. Это негромкое, но резкое щелкающее "чк" и шипящее "чохххх", похожее на громкий выдох или на чуффыканье тетерева. Чаще слышно голос самки – низкое картавое "арарарара, арарарара...", издаваемое обычно в полете.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Melanitta fusca`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Melanitta fusca.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Melanitta fusca'
         },
         {
@@ -145,7 +145,7 @@ const birdsData = [
             name: 'Серая утка',
             species: 'Anas platyrhynchos',
             description: 'Самка утки крякает очень похоже на крякву. Голос самца – звучное низкое "крррэ", или "крррэк".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Anas platyrhynchos`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Anas platyrhynchos.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Anas platyrhynchos'
         }
     ],
@@ -155,7 +155,7 @@ const birdsData = [
             name: 'Белый аист',
             species: 'Ciconia ciconia',
             description: 'Белый аист — самый известный из аистов. Это белая птица с чёрными концами крыльев, длинной шеей, длинным, тонким, красным клювом и длинными красноватыми ногами. Когда крылья у аиста сложены, создаётся впечатление, что вся задняя часть тела аиста чёрная. Отсюда его украинское название — черногуз. Самки по окрасу неотличимы от самцов, но несколько меньше.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Ciconia ciconia`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Ciconia ciconia.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Ciconia ciconia'
         },
         {
@@ -163,7 +163,7 @@ const birdsData = [
             name: 'Ипатка',
             species: 'Fratercula corniculata',
             description: 'Лапы у ипатки красно-оранжевого или красного цвета. На пальцах острые когти. Между пальцами — перепонки. Клюв короткий, толстый у основания. Самцы крупнее самок. Окраска у самцов и самок одинаковая. ',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Fratercula corniculata`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Fratercula corniculata.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Fratercula corniculata'
         },
         {
@@ -171,7 +171,7 @@ const birdsData = [
             name: 'Кайра',
             species: 'Uria',
             description: 'Кайры — род птиц из семейства чистиковых. В их песне присуствуют различные модификации грубых картавых криков: "аррра", "ааар", "уррр" и т.п., в общем похожих на крики толстоклювой кайры.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Uria`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Uria.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Uria'
         },
         {
@@ -179,7 +179,7 @@ const birdsData = [
             name: 'Конюга',
             species: 'Aethia',
             description: 'Конюги наиболее мелкие чистиковые. Длина их тела составляет от 19 до 25 см. Окраса буровато-серый. Спина темнее брюха. В период размножения на головах конюг появляются украшения — чёрные хохолки и длинные белые косицы из перьев, а клюв делается оранжевым или красным.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Aethia`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Aethia.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Aethia'
         },
         {
@@ -187,7 +187,7 @@ const birdsData = [
             name: 'Полярная чайка',
             species: 'Larus glaucoides',
             description: 'Репертуар Чайки состоит в основном из разных вариантов трескучих неприятных криков: "кьяааррр", "кееррр", "киирра", "крре", "керере", и т.п. Вообще птицы очень крикливые, особенно на колониях.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Larus glaucoides`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Larus glaucoides.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Larus glaucoides'
         },
         {
@@ -195,7 +195,7 @@ const birdsData = [
             name: 'Тупик',
             species: 'Fratercula arctica',
             description: 'Ту́пик, или атлантический ту́пик — вид морских птиц из семейства чистиковых отряда ржанкообразных. Обитают на побережьях Атлантического и Северного Ледовитого океанов. Гнездятся в норах на птичьих базарах.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Fratercula arctica`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Fratercula arctica.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Fratercula arctica'
         }
     ],
@@ -205,7 +205,7 @@ const birdsData = [
             name: 'Бекас',
             species: 'Gallinago gallinago',
             description: 'Спугнутый бекас чаще всего издает при взлете смачное "чвек", или "жвяк". Токует в полете, состоящем из подъемов и крутых пикирований, при которых слышен похожий на блеяние звук, издаваемый растопыренными вибрирующими перьями хвоста.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Gallinago gallinago`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Gallinago gallinago.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Gallinago gallinago'
         },
         {
@@ -213,7 +213,7 @@ const birdsData = [
             name: 'Дрофа',
             species: 'Otis tarda',
             description: 'Звуки дрофы редки, они изрядно молчаливы. Все логично, гнездясь на достаточно открытых местностях выгоднее вести себя тише и иметь наиболее маскирующий окрас перьев. Звуки самца во время тока напоминают блеянье. Самки же голосом только подзывают птенцов.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Otis tarda`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Otis tarda.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Otis tarda'
         },
         {
@@ -221,7 +221,7 @@ const birdsData = [
             name: 'Дубонос',
             species: 'Coccothraustes coccothraustes',
             description: 'Голос дубоноса – негромкое высокое "цик", "цик-цик-цик", "црии". Позывки могут учащаться и сливаться в сухую трель: "цкцкцкцкцк". Песня тихая и короткая, примитивный набор звуков наподобие "тик-вирии-рии-рии" или "чичи-тююр-виви" и т.п.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Coccothraustes coccothraustes`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Coccothraustes coccothraustes.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Coccothraustes coccothraustes'
         },
         {
@@ -229,7 +229,7 @@ const birdsData = [
             name: 'Жаворонок',
             species: 'Alauda arvensis',
             description: 'Репертуар жаворонка весьма разнообразен, основу его составляют трелевые звуки. Наиболее часто слышна короткая позывка "чрри" ("трри"), которая служит для поддержания контакта с другими особями в полете. ',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Alauda arvensis`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Alauda arvensis.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Alauda arvensis'
         },
         {
@@ -237,7 +237,7 @@ const birdsData = [
             name: 'Перепел',
             species: 'Coturnix coturnix',
             description: 'Брачная песня перепела – далеко слышный резкий крик, повторяющийся много раз кряду и называемый "перепелиным боем". Его изображают как "подь-полоть" или "вить-вильвить". В промежутках между сериями этих криков слышно негромкое ворчливое "ва-вау".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Coturnix coturnix`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Coturnix coturnix.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Coturnix coturnix'
         },
         {
@@ -245,7 +245,7 @@ const birdsData = [
             name: 'Чибис',
             species: 'Vanellus vanellus',
             description: 'При беспокойстве и преследовании хищников чибис издает громкий хриплый крик "хьИ-вы", или "хыввы", который обычно изображают как "чьи вы?". ',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Vanellus vanellus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Vanellus vanellus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Vanellus vanellus'
         }
     ],
@@ -255,7 +255,7 @@ const birdsData = [
             name: 'Канадский журавль',
             species: 'Grus canadensis',
             description: 'Красивое трубное звучное курлыканье, слышное за несколько километров. При так называемом антифональном дуэте на гнездовой территории пара издает громкие согласованные крики, они сливаются в единую череду курлыкающих сигналов.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Grus canadensis`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Grus canadensis.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Grus canadensis'
         },
         {
@@ -263,7 +263,7 @@ const birdsData = [
             name: 'Кулик',
             species: 'Calidris maritima',
             description: 'Самая обычная позывка в стаях и у одиночных птиц – негромкое "трик" и серии подобных звуков – "ти-ри-рик", "сив-сив-сив-сив", и пр. При беспокойстве и отведении от гнезда – тихое попискивание. В общем такие же звуки слышно и от птиц, водящих птенцов.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Calidris maritima`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Calidris maritima.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Calidris maritima'
         },
         {
@@ -271,7 +271,7 @@ const birdsData = [
             name: 'Плавунчик',
             species: 'Phalaropus lobatus',
             description: 'В самых разных ситуациях – короткое "чирк". При беспокойстве у выводков – то же, а также более продолжительное и мягкое "чшшшшк". При ухаживании и других внутривидовых контактах обычны шумные потоки "чиркающих" звуков разных модификаций.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Phalaropus lobatus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Phalaropus lobatus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Phalaropus lobatus'
         },
         {
@@ -279,7 +279,7 @@ const birdsData = [
             name: 'Полярная сова',
             species: 'Bubo scandiacus',
             description: 'Весенняя песня самца состоит из односложных меланхоличных звуков, повторяющихся с интервалами 1,5–3 сек много раз кряду: "гуу, гуу...". Самка поет реже, ее голос более высокий и сипловатый: "хеев, хеев...". Бывает дуэтное пение. ',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Bubo scandiacus`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Bubo scandiacus.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Bubo scandiacus'
         },
         {
@@ -287,7 +287,7 @@ const birdsData = [
             name: 'Пуночка',
             species: 'Plectrophenax nivalis',
             description: 'Песня пуночки звонкая, несложная, состоит из нескольких трелей: "ври-вре-ври-вре-врю", "вритетютритерю", "виреври-ревирья", похожа на песню подорожника, но короче, громче и раскатистее.',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Plectrophenax nivalis`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Plectrophenax nivalis.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Plectrophenax nivalis'
         },
         {
@@ -295,7 +295,7 @@ const birdsData = [
             name: 'Тундровая утка',
             species: 'Clangula hyemalis',
             description: 'амка крякает очень похоже на крякву. Голос самца – звучное низкое "крррэ", или "крррэк".',
-            image: `https://protected-island-67916.herokuapp.com/birds/image/Clangula hyemalis`,
+            image: `https://raw.githubusercontent.com/Maxvvellh0use/songbird-data/master/images/Clangula hyemalis.jpg`,
             audio: 'https://protected-island-67916.herokuapp.com/birds/audio/Clangula hyemalis'
         }
     ]
