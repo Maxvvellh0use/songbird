@@ -1,0 +1,39 @@
+@import "constants";
+
+ul {
+  list-style: none;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+  background: $color-body !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: $width-wrapper;
+  @media (max-width: 1160px) {
+    margin: 10px;
+  }
+}
+
+.wrapper_functional_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 1160px) {
+    flex-direction: column;
+  }
+}

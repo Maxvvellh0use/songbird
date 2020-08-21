@@ -1,0 +1,14 @@
+@import "../../style/constants";
+
+.button_next_level {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 5px;
+  background: $color-main-blocks;
+  color: snow;
+  padding: 5px;
+}
+
+.button_active {
+  background: $color-birds-list;
+}

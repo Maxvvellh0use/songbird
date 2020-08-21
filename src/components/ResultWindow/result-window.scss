@@ -1,0 +1,60 @@
+@import "../../style/placeholders";
+@import "../../style/constants";
+
+.result_container {
+  @extend %flex_row_center_center;
+  flex-direction: column;
+  font-size: 80px;
+  height: 40vh;
+  color: snow;
+  text-align: center;
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
+  @media (max-width: 368px) {
+    height: 35vh;
+  }
+}
+
+.button_reset_game {
+  width: 150px;
+  font-size: 30px;
+  margin-top: 40px;
+  border-radius: 5px;
+  background: $color-birds-list;
+  color: snow;
+  padding: 5px;
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
+}
+
+.fun_bird_img {
+  margin-top: 200px;
+  width: 650px;
+  @media (max-width: 768px) {
+    margin-top: 60px;
+    width: 70vw;
+  }
+  @media (max-width: 368px) {
+    margin-top: 0;
+    width: 250px;
+  }
+}
+
+.fun_loader_container {
+  @extend %flex_row_center_center;
+  margin-top: 200px;
+  height: 40vh;
+  width: 650px;
+}
+
+.fun_result_container {
+  @extend %flex_row_center_center;
+  flex-direction: column;
+}
+
+.not_fun_result_container {
+  @extend %flex_row_center_center;
+  flex-direction: column;
+}

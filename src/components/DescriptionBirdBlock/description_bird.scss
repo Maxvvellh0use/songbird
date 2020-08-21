@@ -1,0 +1,136 @@
+@import "../../style/constants";
+@import "../../style/placeholders";
+
+.description_bird_block {
+  width: 575px;
+  height: 277px;
+  margin-top: 15px;
+  border-radius: 5px;
+  background: $color-main-blocks;
+  padding: 10px;
+  color: snow;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  @media (max-width: 1160px) {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.image_and_audio {
+  @extend %flex_row_space-between;
+  justify-content: left;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.image_container {
+  max-width: 200px;
+  max-height: 155px;
+  overflow: hidden;
+  @media (max-width: 768px) {
+    margin: auto;
+  }
+}
+
+.bird_image {
+  width: 200px;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 10px;
+  @media (max-width: 268px) {
+    width: 150px;
+    height: 100px;
+  }
+}
+
+.loader_image_container {
+  @extend %flex_row_center_center;
+  width: 200px;
+  height: 155px;
+}
+
+.bird_image_loader {
+  width: 70px;
+}
+
+.bird_name {
+  margin-bottom: 0;
+  font-size: 30px;
+  margin-left: 20px;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}
+
+.bird_species {
+  display: block;
+  width: 100%;
+  margin-left: 20px;
+  padding-bottom: 10px;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+}
+
+.description__bird_description {
+  margin-top: 10px;
+  max-height: 96px;
+  text-align: justify;
+  @media (max-width: 768px) {
+    margin: 5px;
+    font-size: 14px;
+    max-height: 100%;
+    height: 100%;
+  }
+  @media (max-width: 368px) {
+    font-size: 12px;
+  }
+}
+
+.audio_block {
+  @media (max-width: 768px) {
+    margin: auto;
+  }
+}
+
+.container_thumb {
+  margin-left: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.button_thumb {
+  width: 50px;
+  @media (max-width: 268px) {
+    width: 30px;
+  }
+}
+
+.timeBar_thumb {
+  width: 170px;
+  height: 7px;
+  @media (max-width: 268px) {
+    width: 40vw;
+  }
+}
+
+.timeBar_container {
+  margin-left: 10px;
+}
+
+.timeBar_thumb_background {
+  height: 7px;
+}
+
+.hidden {
+  display: none;
+}

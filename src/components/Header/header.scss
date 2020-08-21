@@ -1,0 +1,73 @@
+@import "../../style/constants";
+@import "../../style/placeholders";
+
+.title_and_score {
+  @extend %flex_row_space-between;
+  color: snow;
+  align-items: center;
+  margin-top: 20px;
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
+}
+
+.main_logo_block {
+  display: flex;
+}
+
+.main_logo_title {
+  visibility: hidden;
+  font-size: 0;
+  margin: 0;
+}
+
+.main_logo {
+  display: block;
+  width: 200px;
+  height: 90px;
+  background-image: url("../../assets/img/main_logo.png");
+  background-repeat: no-repeat;
+  background-size: 200px;
+  @media (max-width: 368px) {
+    width: 100px;
+    background-size: 100px;
+    height: 45px;
+  }
+}
+
+.score__score_counter {
+  @media (max-width: 368px) {
+    font-size: 13px;
+  }
+}
+
+.navigation_birds__list {
+  @extend %flex_row_space-between;
+  overflow: hidden;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background: $color-birds-list;
+  color: snow;
+  border-radius: 5px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.bird_list_item {
+  @extend %flex_row_center_center;
+  @extend %my-transition;
+  width: 190px;
+  height: 40px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.bird_list_item__active {
+  background: $color-birds-hover;
+}
+
+
